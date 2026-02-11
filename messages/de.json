@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Onebbau – Bau- und Handwerksleistungen in Halle (Saale)",
+    "description": "Zuverlässige Bau-, Renovierungs- und Gartenarbeiten in Halle (Saale). Qualität, Termintreue und faire Preise."
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "services": "Leistungen",
+    "advantages": "Vorteile",
+    "gallery": "Galerie",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Onebbau – Bau- und Handwerks\u00ADleistungen",
+    "titleHighlight": "in Halle (Saale)",
+    "subtitle": "Zuverlässige Bau-, Renovierungs- und Gartenarbeiten aus einer Hand",
+    "description": "Onebbau ist Ihr kompetenter Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale) und Umgebung. Wir stehen für saubere Arbeit, Termintreue und faire Preise.",
+    "cta": "Kostenlose Beratung anfragen",
+    "badge1": "Zuverlässig",
+    "badge2": "Sauber",
+    "badge3": "Termingerecht"
+  },
+  "about": {
+    "sectionLabel": "Über uns",
+    "title": "Über Onebbau",
+    "text1": "Onebbau ist ein zuverlässiges Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und bieten ein breites Spektrum an Bau-, Renovierungs- und Außenarbeiten.",
+    "text2": "Unser Anspruch ist es, jedes Projekt sorgfältig, sauber und termingerecht auszuführen. Persönliche Beratung, individuelle Lösungen und transparente Preise stehen bei uns im Mittelpunkt.",
+    "stat1Value": "10+",
+    "stat1Label": "Jahre Erfahrung",
+    "stat2Value": "200+",
+    "stat2Label": "Projekte realisiert",
+    "stat3Value": "100%",
+    "stat3Label": "Kundenfokus"
+  },
+  "values": {
+    "reliability": "Zuverlässigkeit",
+    "reliabilityDesc": "Wir halten, was wir versprechen – termingerecht und transparent.",
+    "quality": "Qualität",
+    "qualityDesc": "Fachgerechte Ausführung mit hochwertigen Materialien.",
+    "satisfaction": "Kundenzufriedenheit",
+    "satisfactionDesc": "Ihr Projekt ist erst fertig, wenn Sie zufrieden sind."
+  },
+  "services": {
+    "sectionLabel": "Unsere Leistungen",
+    "title": "Unsere Leistungen",
+    "subtitle": "Professionelle Bau-, Renovierungs- und Gartenarbeiten aus einer Hand",
+    "categoryBau": "Bau & Renovierung",
+    "categoryGarten": "Garten & Außenanlagen",
+    "massivbau": "Massivbau aus Ziegel und Beton",
+    "garagen": "Bau von Garagen und Nebengebäuden",
+    "fassade": "Fassadendämmung und Wärmedämmung",
+    "trockenbau": "Trockenbauarbeiten (Gipskarton)",
+    "maler": "Maler- und Spachtelarbeiten",
+    "boden": "Verlegung aller Bodenbeläge",
+    "elektro": "Verlegung von Elektrokabeln (ohne Anschluss)",
+    "tueren": "Montage von Türen und Fenstern",
+    "terrassen": "Terrassen und Gartenlauben",
+    "moebel": "Möbelmontage",
+    "fliesen": "Keramikfliesen und Pflastersteine",
+    "zaun": "Zaunmontage",
+    "garten": "Gartenreinigung und Pflege",
+    "baumschnitt": "Professioneller Baumschnitt"
+  },
+  "advantages": {
+    "sectionLabel": "Vorteile",
+    "title": "Warum Onebbau?",
+    "subtitle": "Was uns von anderen unterscheidet",
+    "experience": "Erfahrung & Fachkompetenz",
+    "experienceDesc": "Langjährige Erfahrung in Bau und Handwerk – für Ergebnisse, die überzeugen.",
+    "reliability": "Zuverlässigkeit & Termintreue",
+    "reliabilityDesc": "Wir halten Absprachen ein und arbeiten stets termingerecht.",
+    "clean": "Saubere Arbeitsweise",
+    "cleanDesc": "Nach getaner Arbeit hinterlassen wir Ihre Räume sauber und ordentlich.",
+    "price": "Faire & transparente Preise",
+    "priceDesc": "Keine versteckten Kosten – Sie wissen vorher, was es kostet.",
+    "personal": "Persönliche Beratung vor Ort",
+    "personalDesc": "Wir beraten Sie direkt bei Ihnen in Halle (Saale) und Umgebung."
+  },
+  "gallery": {
+    "sectionLabel": "Referenzen",
+    "title": "Referenzen",
+    "subtitle": "Einblicke in unsere abgeschlossenen Projekte",
+    "description": "Wir realisieren Bau-, Renovierungs- und Gartenprojekte für unsere Kunden in Halle (Saale) und Umgebung.",
+    "categories": {
+      "all": "Alle",
+      "bathroom": "Badezimmer",
+      "drywall": "Trockenbau",
+      "facade": "Fassade",
+      "terrace": "Terrasse",
+      "flooring": "Bodenbeläge",
+      "interior": "Innenausbau"
+    }
+  },
+  "contact": {
+    "sectionLabel": "Kontakt",
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Sie planen ein Bau- oder Renovierungsprojekt? Kontaktieren Sie uns gerne für eine unverbindliche Beratung.",
+    "region": "Unser Einsatzgebiet: Halle (Saale) und Umgebung",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "form": {
+      "name": "Ihr Name",
+      "namePlaceholder": "Max Mustermann",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "max@beispiel.de",
+      "phone": "Telefon (optional)",
+      "phonePlaceholder": "+49 345 ...",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihr Projekt...",
+      "submit": "Jetzt Beratung anfragen",
+      "sending": "Wird gesendet...",
+      "success": "Vielen Dank! Wir melden uns bei Ihnen.",
+      "error": "Fehler beim Senden. Bitte versuchen Sie es erneut."
+    }
+  },
+  "footer": {
+    "description": "Onebbau – Bau- und Handwerksleistungen in Halle (Saale). Qualität, Zuverlässigkeit und saubere Arbeit.",
+    "quickLinks": "Schnellzugriff",
+    "contactInfo": "Kontaktdaten",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutzerklärung",
+    "imprint": "Impressum",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "language": {
+    "de": "Deutsch",
+    "ru": "Русский"
+  }
+}
