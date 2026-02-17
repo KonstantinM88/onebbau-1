@@ -1,4 +1,4 @@
-// src/middleware.ts
+// src/proxy.ts
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { locales, defaultLocale } from '@/i18n/config';
@@ -9,7 +9,7 @@ const intlMiddleware = createMiddleware({
   localePrefix: 'always',
 });
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Admin routes — check auth cookie
@@ -18,7 +18,6 @@ export default async function middleware(request: NextRequest) {
     if (!token) {
       return NextResponse.redirect(new URL('/admin/login', request.url));
     }
-    // Token existence check only — full verify in layout/API
     return NextResponse.next();
   }
 
