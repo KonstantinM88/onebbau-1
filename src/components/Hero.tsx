@@ -1,8 +1,12 @@
+// src/components/Hero.tsx
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+
+const HERO_IMAGE_SRC = '/images/hero-main.webp';
 
 export default function Hero() {
   const t = useTranslations('hero');
@@ -16,29 +20,46 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/images/hero-bg.webp)',
-          }}
-        />
-        {/* Dark Overlay with gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/80 via-anthracite-950/60 to-anthracite-950/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/50 via-transparent to-anthracite-950/30" />
-      </div>
+    <>
+      {/* ═══════ MOBILE — Video Background ═══════ */}
+      <section className="relative isolate min-h-[94svh] overflow-hidden bg-anthracite-950 md:hidden">
+        {/* Video background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={HERO_IMAGE_SRC}
+          className="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+        >
+          <source src="/images/hero-mobile.webm" type="video/webm" />
+          <source src="/images/hero-mobile.mp4" type="video/mp4" />
+        </video>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 w-full">
-        <div className="max-w-3xl">
-          {/* Main Title */}
+        {/* Fallback image (if video fails) */}
+        <noscript>
+          <Image
+            src={HERO_IMAGE_SRC}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[68%_center]"
+          />
+        </noscript>
+
+        {/* Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/72 via-anthracite-950/44 to-anthracite-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/86 via-anthracite-950/32 to-anthracite-950/36" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto flex min-h-[94svh] w-full max-w-xl flex-col justify-end px-4 pb-14 pt-28">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-[1.1] mb-4"
+            className="mb-4 font-heading text-[clamp(2.3rem,12vw,3.4rem)] leading-[1.06] text-white"
           >
             <span className="block">Onebbau – Bau- und Handwerks-</span>
             <span className="block">leistungen</span>
@@ -52,17 +73,15 @@ export default function Hero() {
             </motion.span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-lg sm:text-xl md:text-2xl text-white/70 font-light mb-8 tracking-wide"
+            className="mb-8 text-xl font-light tracking-wide text-white/85"
           >
             {t('subtitle')}
           </motion.p>
 
-          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,7 +89,7 @@ export default function Hero() {
           >
             <button
               onClick={scrollToContact}
-              className="group inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orange-dark text-white px-8 py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark active:scale-95"
             >
               {t('cta')}
               <ArrowRight
@@ -80,24 +99,252 @@ export default function Hero() {
             </button>
           </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Scroll indicator */}
-      <motion.button
-        onClick={scrollToAbout}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-white/50 hover:text-white transition-colors"
-        aria-label="Scroll down"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+      {/* ═══════ DESKTOP — Image Background ═══════ */}
+      <section className="relative isolate hidden min-h-[90svh] items-center overflow-hidden md:flex lg:min-h-screen">
+        <div className="absolute inset-0">
+          <Image
+            src={HERO_IMAGE_SRC}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center lg:object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/88 via-anthracite-950/62 to-anthracite-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/62 via-anthracite-950/28 to-anthracite-950/45" />
+        </div>
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 pt-32 lg:px-8 lg:pb-28 lg:pt-36">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mb-4 font-heading text-5xl leading-[1.1] text-white lg:text-7xl"
+            >
+              <span className="block">Onebbau – Bau- und Handwerks-</span>
+              <span className="block">leistungen</span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="block text-brand-orange"
+              >
+                {t('titleHighlight')}
+              </motion.span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="mb-8 max-w-xl text-xl font-light tracking-wide text-white/80 lg:text-2xl"
+            >
+              {t('subtitle')}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+            >
+              <button
+                onClick={scrollToContact}
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
+              >
+                {t('cta')}
+                <ArrowRight
+                  size={20}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </button>
+            </motion.div>
+          </div>
+        </div>
+
+        <motion.button
+          onClick={scrollToAbout}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/60 transition-colors hover:text-white"
+          aria-label="Scroll down"
         >
-          <ChevronDown size={32} />
-        </motion.div>
-      </motion.button>
-    </section>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+          >
+            <ChevronDown size={32} />
+          </motion.div>
+        </motion.button>
+      </section>
+    </>
   );
 }
+
+
+//-------добавляем видео в геро секцию, но пока закомментируем, так как нужно оптимизировать видео для веба и подобрать правильные форматы и размеры.-------
+// 'use client';
+
+// import Image from 'next/image';
+// import { useTranslations } from 'next-intl';
+// import { motion } from 'framer-motion';
+// import { ArrowRight, ChevronDown } from 'lucide-react';
+
+// const HERO_IMAGE_SRC = '/images/hero-main.webp';
+
+// export default function Hero() {
+//   const t = useTranslations('hero');
+
+//   const scrollToContact = () => {
+//     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+//   };
+
+//   const scrollToAbout = () => {
+//     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+//   };
+
+//   return (
+//     <>
+//       <section className="relative isolate min-h-[94svh] overflow-hidden bg-anthracite-950 md:hidden">
+//         <Image
+//           src={HERO_IMAGE_SRC}
+//           alt=""
+//           fill
+//           priority
+//           sizes="100vw"
+//           className="object-cover object-[68%_center]"
+//         />
+//         <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/72 via-anthracite-950/44 to-anthracite-950/30" />
+//         <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/86 via-anthracite-950/32 to-anthracite-950/36" />
+
+//         <div className="relative z-10 mx-auto flex min-h-[94svh] w-full max-w-xl flex-col justify-end px-4 pb-14 pt-28">
+//           <motion.h1
+//             initial={{ opacity: 0, y: 40 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.7, delay: 0.2 }}
+//             className="mb-4 font-heading text-[clamp(2.3rem,12vw,3.4rem)] leading-[1.06] text-white"
+//           >
+//             <span className="block">Onebbau – Bau- und Handwerks-</span>
+//             <span className="block">leistungen</span>
+//             <motion.span
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.7, delay: 0.5 }}
+//               className="block text-brand-orange"
+//             >
+//               {t('titleHighlight')}
+//             </motion.span>
+//           </motion.h1>
+
+//           <motion.p
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.7 }}
+//             className="mb-8 text-xl font-light tracking-wide text-white/85"
+//           >
+//             {t('subtitle')}
+//           </motion.p>
+
+//           <motion.div
+//             initial={{ opacity: 0, y: 20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.6, delay: 0.9 }}
+//           >
+//             <button
+//               onClick={scrollToContact}
+//               className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark active:scale-95"
+//             >
+//               {t('cta')}
+//               <ArrowRight
+//                 size={20}
+//                 className="transition-transform group-hover:translate-x-1"
+//               />
+//             </button>
+//           </motion.div>
+//         </div>
+//       </section>
+
+//       <section className="relative isolate hidden min-h-[90svh] items-center overflow-hidden md:flex lg:min-h-screen">
+//         <div className="absolute inset-0">
+//           <Image
+//             src={HERO_IMAGE_SRC}
+//             alt=""
+//             fill
+//             priority
+//             sizes="100vw"
+//             className="object-cover object-center lg:object-center"
+//           />
+//           <div className="absolute inset-0 bg-gradient-to-r from-anthracite-950/88 via-anthracite-950/62 to-anthracite-950/30" />
+//           <div className="absolute inset-0 bg-gradient-to-t from-anthracite-950/62 via-anthracite-950/28 to-anthracite-950/45" />
+//         </div>
+
+//         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 pt-32 lg:px-8 lg:pb-28 lg:pt-36">
+//           <div className="max-w-2xl lg:max-w-3xl">
+//             <motion.h1
+//               initial={{ opacity: 0, y: 40 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.7, delay: 0.2 }}
+//               className="mb-4 font-heading text-5xl leading-[1.1] text-white lg:text-7xl"
+//             >
+//               <span className="block">Onebbau – Bau- und Handwerks-</span>
+//               <span className="block">leistungen</span>
+//               <motion.span
+//                 initial={{ opacity: 0, y: 20 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.7, delay: 0.5 }}
+//                 className="block text-brand-orange"
+//               >
+//                 {t('titleHighlight')}
+//               </motion.span>
+//             </motion.h1>
+
+//             <motion.p
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.6, delay: 0.7 }}
+//               className="mb-8 max-w-xl text-xl font-light tracking-wide text-white/80 lg:text-2xl"
+//             >
+//               {t('subtitle')}
+//             </motion.p>
+
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.6, delay: 0.9 }}
+//             >
+//               <button
+//                 onClick={scrollToContact}
+//                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
+//               >
+//                 {t('cta')}
+//                 <ArrowRight
+//                   size={20}
+//                   className="transition-transform group-hover:translate-x-1"
+//                 />
+//               </button>
+//             </motion.div>
+//           </div>
+//         </div>
+
+//         <motion.button
+//           onClick={scrollToAbout}
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: 1 }}
+//           transition={{ delay: 1.5 }}
+//           className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/60 transition-colors hover:text-white"
+//           aria-label="Scroll down"
+//         >
+//           <motion.div
+//             animate={{ y: [0, 8, 0] }}
+//             transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+//           >
+//             <ChevronDown size={32} />
+//           </motion.div>
+//         </motion.button>
+//       </section>
+//     </>
+//   );
+// }
