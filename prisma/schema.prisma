@@ -17,3 +17,21 @@ model ContactRequest {
   createdAt DateTime @default(now())
   read      Boolean  @default(false)
 }
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  url       String
+  filename  String?
+  mimeType  String?
+  category  String   @default("interior")
+  caption   String?
+  captionRu String?
+  sortOrder Int      @default(0)
+  width     Int      @default(0)
+  height    Int      @default(0)
+  size      Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category, sortOrder])
+}

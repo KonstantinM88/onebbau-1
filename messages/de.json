@@ -12,7 +12,7 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Onebbau – Bau- und Handwerks\u00ADleistungen",
+    "title": "Onebbau – Bau- und Handwerks­leistungen",
     "titleHighlight": "in Halle (Saale)",
     "subtitle": "Zuverlässige Bau-, Renovierungs- und Gartenarbeiten aus einer Hand",
     "description": "Onebbau ist Ihr kompetenter Partner für Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale) und Umgebung. Wir stehen für saubere Arbeit, Termintreue und faire Preise.",
@@ -90,7 +90,8 @@
       "terrace": "Terrasse",
       "flooring": "Bodenbeläge",
       "interior": "Innenausbau"
-    }
+    },
+    "viewAll": "Alle Projekte ansehen"
   },
   "contact": {
     "sectionLabel": "Kontakt",

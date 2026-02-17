@@ -90,7 +90,8 @@
       "terrace": "Терраса",
       "flooring": "Полы",
       "interior": "Интерьер"
-    }
+    },
+    "viewAll": "Посмотреть все проекты"
   },
   "contact": {
     "sectionLabel": "Контакты",

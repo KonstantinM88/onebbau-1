@@ -6,10 +6,8 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 export default function Footer() {
   const t = useTranslations();
   const locale = useLocale();
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const homePath = `/${locale}`;
+  const sectionHref = (id: string) => `${homePath}#${id}`;
 
   return (
     <footer className="bg-anthracite-900 text-anthracite-300">
@@ -40,12 +38,12 @@ export default function Footer() {
                 { label: t('nav.contact'), id: 'contact' },
               ].map((item) => (
                 <li key={item.label}>
-                  <button
-                    onClick={() => item.id ? scrollToSection(item.id) : window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  <a
+                    href={item.id ? sectionHref(item.id) : item.href}
                     className="text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
                   >
                     {item.label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
