@@ -69,13 +69,13 @@ export default function Footer() {
               {t('nav.contact')}
             </h4>
             <div className="space-y-3">
-              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
-                {process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}
+                {process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}
               </a>
               <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
-                {process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}
+                {process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de'}
               </a>
               <div className="flex items-center gap-3 text-sm text-anthracite-400">
                 <MapPin size={15} className="text-brand-orange flex-shrink-0" />

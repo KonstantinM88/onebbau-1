@@ -70,8 +70,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-anthracite-400">{t('phone')}</p>
-                  <a href="tel:+4934512345678" className="text-white font-medium hover:text-primary-400 transition-colors">
-                    +49 345 123 456 78
+                  <a href="tel:+4915204586659" className="text-white font-medium hover:text-primary-400 transition-colors">
+                    +49 1520 458 6659
                   </a>
                 </div>
               </div>
