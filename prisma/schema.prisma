@@ -35,3 +35,33 @@ model GalleryImage {
 
   @@index([category, sortOrder])
 }
+
+model NewsArticle {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  /// DE content
+  title       String
+  excerpt     String   @default("")
+  content     String   @default("")
+  /// RU content
+  titleRu     String   @default("")
+  excerptRu   String   @default("")
+  contentRu   String   @default("")
+  /// Media
+  coverUrl    String?
+  coverWidth  Int      @default(0)
+  coverHeight Int      @default(0)
+  /// SEO
+  metaTitle   String?
+  metaTitleRu String?
+  metaDesc    String?
+  metaDescRu  String?
+  /// Status
+  published   Boolean  @default(false)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, publishedAt])
+  @@index([slug])
+}
