@@ -10,6 +10,8 @@ export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const primaryPhone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
+  const secondaryPhone = '+49 177 33077538';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -73,20 +75,24 @@ export default function Contact() {
             </p>
 
             <div className="space-y-5">
-              <a
-                href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}`}
-                className="flex items-center gap-4 group"
-              >
+              <div className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center group-hover:bg-brand-orange transition-colors">
                   <Phone size={20} className="text-brand-orange group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('phone')}</p>
-                  <p className="text-anthracite-800 font-medium">
-                    {process.env.NEXT_PUBLIC_PHONE || '+49 123 456789'}
+                  <p className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors">
+                    <a href={`tel:${primaryPhone.replace(/\s+/g, '')}`}>
+                      {primaryPhone}
+                    </a>
+                  </p>
+                  <p className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors">
+                    <a href={`tel:${secondaryPhone.replace(/\s+/g, '')}`}>
+                      {secondaryPhone}
+                    </a>
                   </p>
                 </div>
-              </a>
+              </div>
 
               <a
                 href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`}

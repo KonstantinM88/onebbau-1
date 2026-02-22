@@ -4,6 +4,9 @@ import Footer from '@/components/Footer';
 
 export default function Impressum() {
   const t = useTranslations('impressum');
+  const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
+  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
+  const content = t('content', { phone, email });
 
   return (
     <>
@@ -14,7 +17,7 @@ export default function Impressum() {
             {t('title')}
           </h1>
           <div className="prose prose-anthracite max-w-none">
-            {t('content').split('\n').map((line, i) => (
+            {content.split('\n').map((line, i) => (
               <p key={i} className="text-anthracite-600 leading-relaxed mb-2">
                 {line}
               </p>
