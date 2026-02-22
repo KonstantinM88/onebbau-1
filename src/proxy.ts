@@ -13,6 +13,11 @@ const intlMiddleware = createMiddleware({
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Google Search Console verification files in site root
+  if (/^\/google[a-z0-9]+\.html$/i.test(pathname)) {
+    return NextResponse.next();
+  }
+
   // Admin routes — check auth cookie
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     const token = request.cookies.get('admin-token')?.value;
