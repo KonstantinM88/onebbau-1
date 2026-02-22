@@ -21,6 +21,10 @@ export default function Hero() {
 
   return (
     <>
+      <h1 className="sr-only">
+        Onebbau – Bau- und Handwerks-leistungen {t('titleHighlight')}
+      </h1>
+
       {/* ═══════ MOBILE — Video Background ═══════ */}
       <section className="relative isolate min-h-[94svh] overflow-hidden bg-anthracite-950 md:hidden">
         {/* Video background */}
@@ -55,11 +59,12 @@ export default function Hero() {
 
         {/* Content */}
         <div className="relative z-10 mx-auto flex min-h-[94svh] w-full max-w-xl flex-col justify-end px-4 pb-14 pt-28">
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mb-4 font-heading text-[clamp(2.3rem,12vw,3.4rem)] leading-[1.06] text-white"
+            aria-hidden="true"
           >
             <span className="block">Onebbau – Bau- und Handwerks-</span>
             <span className="block">leistungen</span>
@@ -71,7 +76,7 @@ export default function Hero() {
             >
               {t('titleHighlight')}
             </motion.span>
-          </motion.h1>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -118,11 +123,12 @@ export default function Hero() {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 pt-32 lg:px-8 lg:pb-28 lg:pt-36">
           <div className="max-w-2xl lg:max-w-3xl">
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mb-4 font-heading text-5xl leading-[1.1] text-white lg:text-7xl"
+              aria-hidden="true"
             >
               <span className="block">Onebbau – Bau- und Handwerks-</span>
               <span className="block">leistungen</span>
@@ -134,7 +140,7 @@ export default function Hero() {
               >
                 {t('titleHighlight')}
               </motion.span>
-            </motion.h1>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
