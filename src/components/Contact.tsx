@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle, PhoneCall } from 'lucide-react';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -12,6 +12,8 @@ export default function Contact() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const primaryPhone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
   const secondaryPhone = '+49 177 33077538';
+  const phoneToTel = (value: string) => value.replace(/\s+/g, '');
+  const phoneToWhatsApp = (value: string) => value.replace(/\D/g, '');
 
   const [formData, setFormData] = useState({
     name: '',
@@ -81,16 +83,41 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('phone')}</p>
-                  <p className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors">
-                    <a href={`tel:${primaryPhone.replace(/\s+/g, '')}`}>
-                      {primaryPhone}
-                    </a>
-                  </p>
-                  <p className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors">
-                    <a href={`tel:${secondaryPhone.replace(/\s+/g, '')}`}>
-                      {secondaryPhone}
-                    </a>
-                  </p>
+                  <div className="mt-1.5 space-y-1.5">
+                    {[
+                      { label: primaryPhone, value: primaryPhone },
+                      { label: secondaryPhone, value: secondaryPhone },
+                    ].map((phone) => (
+                      <div key={phone.value} className="flex items-center gap-2">
+                        <a
+                          href={`tel:${phoneToTel(phone.value)}`}
+                          className="text-anthracite-800 font-medium hover:text-brand-orange transition-colors"
+                        >
+                          {phone.label}
+                        </a>
+                        <a
+                          href={`tel:${phoneToTel(phone.value)}`}
+                          className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-anthracite-200 text-anthracite-500 hover:border-brand-orange/40 hover:text-brand-orange transition-colors"
+                          aria-label={`Call ${phone.label}`}
+                        >
+                          <PhoneCall size={14} />
+                        </a>
+                        <a
+                          href={`https://wa.me/${phoneToWhatsApp(phone.value)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-green-200 text-green-600 hover:bg-green-50 transition-colors"
+                          aria-label={`WhatsApp ${phone.label}`}
+                          title="WhatsApp"
+                        >
+                          <svg viewBox="0 0 32 32" className="h-4 w-4 fill-current" aria-hidden="true">
+                            <path d="M19.11 17.24c-.27-.14-1.61-.79-1.86-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.31.2-.58.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.41-.46.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.93-.96 2.27 0 1.34.98 2.64 1.11 2.82.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.61-.66 1.84-1.29.23-.64.23-1.19.16-1.29-.07-.09-.25-.14-.52-.27z" />
+                            <path d="M16 3C8.83 3 3 8.83 3 16c0 2.29.6 4.53 1.73 6.5L3 29l6.71-1.7A13 13 0 1 0 16 3zm0 23.83c-2.03 0-4.01-.57-5.72-1.64l-.41-.25-3.98 1.01 1.06-3.88-.27-.4A10.78 10.78 0 1 1 16 26.83z" />
+                          </svg>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
