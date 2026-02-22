@@ -1,6 +1,46 @@
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+type Params = Promise<{ locale: string }>;
+
+const metaDescriptions: Record<string, string> = {
+  de: 'Datenschutzerklärung von Onebbau nach DSGVO und TDDDG.',
+  ru: 'Политика конфиденциальности Onebbau в соответствии с DSGVO и TDDDG.',
+};
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { locale } = await params;
+  const lang = locale === 'ru' ? 'ru' : 'de';
+  const title = lang === 'ru'
+    ? 'Datenschutz / Политика конфиденциальности — Onebbau'
+    : 'Datenschutzerklärung — Onebbau';
+  const description = metaDescriptions[lang];
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/datenschutz`,
+      languages: {
+        de: '/de/datenschutz',
+        ru: '/ru/datenschutz',
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: lang === 'de' ? 'de_DE' : 'ru_RU',
+      url: `/${lang}/datenschutz`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export default function Datenschutz() {
   const t = useTranslations('datenschutz');

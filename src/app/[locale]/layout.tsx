@@ -26,6 +26,12 @@ const fontBody = Plus_Jakarta_Sans({
   variable: '--font-body'
 });
 
+function getBaseUrl() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!siteUrl) return 'https://onebbau.de';
+  return siteUrl.replace(/\/+$/, '');
+}
+
 export async function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }
@@ -33,8 +39,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({params}: {params: Params}): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'metadata'});
+  const baseUrl = getBaseUrl();
+  const heroImage = '/images/hero-main.webp';
 
   return {
+    metadataBase: new URL(baseUrl),
     title: t('title'),
     description: t('description'),
     keywords:
@@ -45,7 +54,27 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
       title: t('title'),
       description: t('description'),
       locale: locale === 'de' ? 'de_DE' : 'ru_RU',
-      type: 'website'
+      type: 'website',
+      siteName: 'Onebbau',
+      url: `/${locale}`,
+      images: [
+        {
+          url: heroImage,
+          width: 1200,
+          height: 630,
+          alt: 'Onebbau'
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: [heroImage]
+    },
+    robots: {
+      index: true,
+      follow: true
     }
   };
 }
