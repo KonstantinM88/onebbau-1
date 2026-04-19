@@ -1,4 +1,4 @@
-const PROD_SITE_URL = 'https://onebbau.de';
+const PROD_SITE_URL = 'https://www.onebbau.de';
 const DEV_SITE_URL = 'http://localhost:3000';
 
 export function getSiteUrl() {

@@ -4,6 +4,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { getSiteUrl } from '@/lib/site';
 import {
   ArrowLeft,
   Calendar,
@@ -169,10 +170,11 @@ export default function ArticleClient({
   const isRu = locale === 'ru';
   const tx = isRu ? t.ru : t.de;
   const readTime = estimateReadTime(content);
+  const siteUrl = getSiteUrl();
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
-    : '';
+    : `${siteUrl}/${locale}/news/${slug}`;
 
   const handleShare = async () => {
     if (navigator.share) {
