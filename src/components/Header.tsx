@@ -16,6 +16,7 @@ const sectionIds: Record<string, string> = {
 };
 // These link to separate pages
 const pageLinks: Record<string, string> = {
+  about: '/about',
   gallery: '/galerie',
   news: '/news',
 };
@@ -27,6 +28,8 @@ export default function Header() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const isHomePage = pathname === `/${locale}`;
+  const useSolidHeader = isScrolled || !isHomePage;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -56,7 +59,7 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          useSolidHeader
             ? 'bg-white/95 backdrop-blur-md shadow-lg shadow-black/5'
             : 'bg-transparent'
         }`}
@@ -69,9 +72,9 @@ export default function Header() {
               className="group"
             >
               <span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
-                isScrolled ? 'text-brand-orange' : 'text-white'
+                useSolidHeader ? 'text-brand-orange' : 'text-white'
               }`}>One</span><span className={`text-2xl sm:text-[28px] font-heading tracking-tight transition-colors ${
-                isScrolled ? 'text-anthracite-800' : 'text-white'
+                useSolidHeader ? 'text-anthracite-800' : 'text-white'
               }`}>bbau</span>
             </a>
 
@@ -85,7 +88,7 @@ export default function Header() {
                       key={item}
                       href={`/${locale}${pageLink}`}
                       className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                        isScrolled
+                        useSolidHeader
                           ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
                           : 'text-white/80 hover:text-white hover:bg-white/10'
                       }`}
@@ -99,7 +102,7 @@ export default function Header() {
                     key={item}
                     href={sectionHref(sectionIds[item])}
                     className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                      isScrolled
+                      useSolidHeader
                         ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
                         : 'text-white/80 hover:text-white hover:bg-white/10'
                     }`}
@@ -119,7 +122,7 @@ export default function Header() {
                   className={`px-3 py-1.5 text-xs font-semibold tracking-wide transition-all ${
                     locale === 'de'
                       ? 'bg-brand-orange text-white'
-                      : isScrolled
+                      : useSolidHeader
                         ? 'text-anthracite-500 hover:text-anthracite-800'
                         : 'text-white/60 hover:text-white'
                   }`}
@@ -131,7 +134,7 @@ export default function Header() {
                   className={`px-3 py-1.5 text-xs font-semibold tracking-wide transition-all ${
                     locale === 'ru'
                       ? 'bg-brand-orange text-white'
-                      : isScrolled
+                      : useSolidHeader
                         ? 'text-anthracite-500 hover:text-anthracite-800'
                         : 'text-white/60 hover:text-white'
                   }`}
@@ -154,7 +157,7 @@ export default function Header() {
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled ? 'text-anthracite-700' : 'text-white'
+                useSolidHeader ? 'text-anthracite-700' : 'text-white'
               }`}
               aria-label="Toggle menu"
             >

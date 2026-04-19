@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: t('nav.home'), href: `/${locale}` },
-                { label: t('nav.about'), id: 'about' },
+                { label: t('nav.about'), href: `/${locale}/about` },
                 { label: t('nav.services'), id: 'services' },
                 { label: t('nav.whyUs'), id: 'why-us' },
                 { label: t('nav.gallery'), id: 'gallery' },

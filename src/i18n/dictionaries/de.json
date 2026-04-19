@@ -41,6 +41,101 @@
     "text1": "Onebbau ist ein zuverlässiges Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir arbeiten für Privatkunden, Vermieter und kleine Unternehmen und bieten ein breites Spektrum an Bau-, Renovierungs- und Außenarbeiten.",
     "text2": "Unser Anspruch ist es, jedes Projekt sorgfältig, sauber und termingerecht auszuführen. Persönliche Beratung, individuelle Lösungen und transparente Preise stehen bei uns im Mittelpunkt."
   },
+  "aboutPage": {
+    "hero": {
+      "eyebrow": "Über uns",
+      "title": "Onebbau als Partner für Bau, Renovierung und saubere Abläufe",
+      "lead": "Wir arbeiten für Privatkunden, Vermieter und kleinere Unternehmen in Halle (Saale) und Umgebung. Im Mittelpunkt stehen für uns nachvollziehbare Angebote, saubere Ausführung und eine Kommunikation, die auch während laufender Arbeiten verlässlich bleibt.",
+      "primaryCta": "Projekt anfragen",
+      "secondaryCta": "Referenzen ansehen",
+      "imageAlt": "Onebbau bei Bau- und Renovierungsarbeiten in Halle (Saale)",
+      "imageTag": "Halle (Saale) & Umgebung",
+      "imageTitle": "Ordentliche Baustelle, klare Absprachen, sauberes Ergebnis",
+      "imageText": "Viele Kunden beauftragen uns, weil sie nicht nur eine handwerkliche Ausführung brauchen, sondern einen Ablauf, der auch im Alltag tragbar bleibt.",
+      "floatingCardTitle": "Direkte Abstimmung",
+      "floatingCardText": "Kurze Wege bei Rückfragen, realistische Einschätzung vor Ort und nachvollziehbare Entscheidungen während des Projekts.",
+      "metricValue": "Sauber + planbar",
+      "metricLabel": "Gerade bei bewohnten Wohnungen, Mietobjekten und Außenarbeiten ist ein geordneter Ablauf oft genauso wichtig wie das Endergebnis.",
+      "highlights": [
+        "Persönliche Besichtigung und ehrliche Einschätzung vor Beginn",
+        "Strukturierte Ausführung mit Blick auf Ordnung und Alltagstauglichkeit",
+        "Ein Ansprechpartner statt unklarer Übergaben zwischen mehreren Stellen"
+      ]
+    },
+    "stats": [
+      { "value": "10+", "label": "Jahre Erfahrung im Bau- und Handwerksumfeld" },
+      { "value": "200+", "label": "umgesetzte Arbeiten und Renovierungsprojekte" },
+      { "value": "Halle +", "label": "fester Schwerpunkt in Halle (Saale) und Umgebung" },
+      { "value": "Direkt", "label": "persönliche Abstimmung statt anonymer Weitergabe" }
+    ],
+    "story": {
+      "title": "Wer wir sind und wie wir arbeiten",
+      "paragraph1": "Onebbau ist ein Bau- und Handwerksunternehmen mit Sitz in Halle (Saale). Wir übernehmen sowohl einzelne Gewerke als auch zusammenhängende Renovierungsarbeiten, wenn ein Projekt sauber geplant und zuverlässig umgesetzt werden soll.",
+      "paragraph2": "Viele Kunden kommen zu uns, wenn sie nicht nur eine Ausführung, sondern auch eine klare Einschätzung brauchen: Was ist sinnvoll, welche Reihenfolge passt, wo lohnt sich Materialqualität und wie lässt sich ein Projekt im bewohnten Zustand oder zwischen zwei Mietern realistisch organisieren.",
+      "paragraph3": "Unser Fokus liegt auf einer verständlichen Abstimmung vor Beginn, einer geordneten Baustelle während der Ausführung und einem Ergebnis, das auch im Detail ordentlich wirkt. Genau diese Kombination aus Beratung, handwerklicher Arbeit und Verlässlichkeit ist der Grund, warum wir häufig weiterempfohlen werden."
+    },
+    "serviceArea": {
+      "title": "Unser Einsatzgebiet",
+      "text": "Wir arbeiten schwerpunktmäßig in Halle (Saale) und übernehmen Projekte in nahegelegenen Orten abhängig von Umfang, Terminlage und Anfahrt. Dadurch können wir Besichtigungen, Rückfragen und Nacharbeiten ohne unnötige Verzögerung organisieren.",
+      "locations": ["Halle (Saale)", "Merseburg", "Kabelsketal", "Landsberg", "Teutschenthal", "Bad Lauchstädt"]
+    },
+    "valuesTitle": "Worauf Kunden sich bei Onebbau verlassen",
+    "valuesIntro": "Gerade bei Renovierungen entscheidet nicht nur das Endergebnis, sondern auch der Weg dorthin. Deshalb sind für uns nicht nur handwerkliche Qualität, sondern auch Ordnung, Transparenz und saubere Absprachen Teil der eigentlichen Leistung.",
+    "values": [
+      {
+        "title": "Klare Abstimmung statt Unklarheiten auf der Baustelle",
+        "text": "Vor Beginn besprechen wir Umfang, Reihenfolge und sinnvolle Lösungen so, dass Sie wissen, was tatsächlich gemacht wird. Das reduziert Missverständnisse und hilft, Änderungen rechtzeitig zu klären."
+      },
+      {
+        "title": "Saubere und nachvollziehbare Ausführung",
+        "text": "Viele Projekte finden in bewohnten Wohnungen, Häusern oder sensiblen Übergangsphasen statt. Deshalb achten wir auf saubere Arbeitsbereiche, geordnete Abläufe und einen Zustand, der auch während der Arbeiten tragbar bleibt."
+      },
+      {
+        "title": "Realistische Preise und ehrliche Einschätzung",
+        "text": "Wir versuchen nicht, Projekte künstlich schönzurechnen. Wenn ein Vorhaben mehr Aufwand bedeutet oder wenn mehrere Wege möglich sind, sprechen wir das offen an, damit Entscheidungen auf einer realistischen Basis getroffen werden können."
+      }
+    ],
+    "audiencesTitle": "Für welche Kunden wir besonders oft arbeiten",
+    "audiencesIntro": "Unsere Projekte sind selten völlig standardisiert. Trotzdem gibt es typische Situationen, in denen Kunden uns besonders häufig anfragen, weil Zuverlässigkeit, Tempo und saubere Kommunikation dort besonders wichtig sind.",
+    "audiences": [
+      {
+        "title": "Privatkunden mit Bad-, Innenausbau- oder Außenprojekten",
+        "text": "Wenn im eigenen Zuhause renoviert oder umgebaut wird, braucht es nicht nur gute Arbeit, sondern auch Rücksicht auf den Alltag. Genau hier helfen strukturierte Abläufe und realistische Zeitfenster."
+      },
+      {
+        "title": "Vermieter und Eigentümer vor Neuvermietung",
+        "text": "Zwischen zwei Mietern zählt oft jeder Tag. Wir helfen dabei, Wohnungen oder einzelne Bereiche zügig, ordentlich und ohne unnötige Abstimmungsrunden wieder in einen guten Zustand zu bringen."
+      },
+      {
+        "title": "Kleine Unternehmen mit überschaubaren Umbauten",
+        "text": "Auch kleinere Gewerbeobjekte brauchen saubere Lösungen, klare Termine und eine Ausführung, die den laufenden Betrieb möglichst wenig stört. Genau darauf richten wir unsere Planung aus."
+      }
+    ],
+    "audiencesHighlight": {
+      "title": "Nicht jedes Projekt muss groß sein, um gut organisiert zu werden",
+      "text": "Wir übernehmen auch kleinere oder mittlere Arbeiten, wenn sie fachlich zu unserem Spektrum passen und sich sinnvoll in den Ablauf einplanen lassen. Entscheidend ist nicht nur die Größe, sondern dass das Projekt sauber vorbereitet und ordentlich abgeschlossen wird."
+    },
+    "processTitle": "So läuft ein Projekt mit uns in der Regel ab",
+    "processIntro": "Je klarer die Vorbereitung, desto ruhiger die Ausführung. Deshalb setzen wir auf einen Ablauf, der Entscheidungen früh bündelt und spätere Reibung reduziert.",
+    "process": [
+      {
+        "title": "Besichtigung und Einschätzung",
+        "text": "Wir schauen uns vor Ort an, was gemacht werden soll, welche Randbedingungen bestehen und welche Lösung technisch und wirtschaftlich sinnvoll ist."
+      },
+      {
+        "title": "Angebot und Abstimmung",
+        "text": "Sie erhalten ein nachvollziehbares Angebot mit realistischem Umfang. Wenn Alternativen möglich sind, besprechen wir diese vor Beginn und nicht erst mitten im Projekt."
+      },
+      {
+        "title": "Ausführung mit Ordnung und Rückmeldung",
+        "text": "Während der Arbeiten bleiben wir ansprechbar, halten Absprachen ein und stimmen relevante Punkte rechtzeitig mit Ihnen ab."
+      },
+      {
+        "title": "Abschluss und saubere Übergabe",
+        "text": "Am Ende geht es nicht nur um 'fertig', sondern um einen Zustand, den Sie tatsächlich übernehmen oder direkt weiter nutzen können."
+      }
+    ]
+  },
   "services": {
     "sectionTitle": "Unsere Leistungen",
     "construction": {

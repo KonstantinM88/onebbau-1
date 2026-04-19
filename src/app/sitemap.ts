@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { locales } from '@/i18n/config';
 import { getSiteUrl } from '@/lib/site';
 
-const STATIC_PATHS = ['', '/news', '/galerie', '/impressum', '/datenschutz'] as const;
+const STATIC_PATHS = ['', '/about', '/news', '/galerie', '/impressum', '/datenschutz'] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
