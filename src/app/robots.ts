@@ -1,13 +1,8 @@
 import type { MetadataRoute } from 'next';
-
-function getBaseUrl() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!siteUrl) return 'https://onebbau.de';
-  return siteUrl.replace(/\/+$/, '');
-}
+import { getSiteUrl } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = getBaseUrl();
+  const baseUrl = getSiteUrl();
 
   return {
     rules: [

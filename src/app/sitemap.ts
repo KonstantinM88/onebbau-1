@@ -1,17 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
 import { locales } from '@/i18n/config';
+import { getSiteUrl } from '@/lib/site';
 
 const STATIC_PATHS = ['', '/news', '/galerie', '/impressum', '/datenschutz'] as const;
 
-function getBaseUrl() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!siteUrl) return 'https://onebbau.de';
-  return siteUrl.replace(/\/+$/, '');
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = getBaseUrl();
+  const baseUrl = getSiteUrl();
   const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -46,7 +47,7 @@ export default function Datenschutz() {
   const t = useTranslations('datenschutz');
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
   const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://onebbau.de').replace(/\/+$/, '');
+  const siteUrl = getSiteUrl();
   const content = t('content', { phone, email, siteUrl });
 
   return (

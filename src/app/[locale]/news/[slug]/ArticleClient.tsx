@@ -172,7 +172,7 @@ export default function ArticleClient({
 
   const shareUrl = typeof window !== 'undefined'
     ? window.location.href
-    : `https://onebbau.de/${locale}/news/${slug}`;
+    : '';
 
   const handleShare = async () => {
     if (navigator.share) {

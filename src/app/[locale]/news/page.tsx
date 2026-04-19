@@ -1,6 +1,7 @@
 // src/app/[locale]/news/page.tsx
 import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
+import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsListClient from './NewsListClient';
@@ -60,13 +61,14 @@ export default async function NewsPage({ params }: { params: Params }) {
   const { locale } = await params;
   const articles = await getPublishedArticles();
   const lang = locale === 'ru' ? 'ru' : 'de';
+  const siteUrl = getSiteUrl();
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: metaTitles[lang],
     description: metaDescriptions[lang],
-    url: `https://onebbau.de/${lang}/news`,
+    url: `${siteUrl}/${lang}/news`,
     publisher: {
       '@type': 'HomeAndConstructionBusiness',
       name: 'Onebbau',
@@ -81,9 +83,9 @@ export default async function NewsPage({ params }: { params: Params }) {
       '@type': 'BlogPosting',
       headline: lang === 'ru' ? (a.titleRu || a.title) : a.title,
       description: lang === 'ru' ? (a.excerptRu || a.excerpt) : a.excerpt,
-      url: `https://onebbau.de/${lang}/news/${a.slug}`,
+      url: `${siteUrl}/${lang}/news/${a.slug}`,
       datePublished: a.publishedAt.toISOString(),
-      ...(a.coverUrl ? { image: `https://onebbau.de${a.coverUrl}` } : {}),
+      ...(a.coverUrl ? { image: `${siteUrl}${a.coverUrl}` } : {}),
     })),
   };
 

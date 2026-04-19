@@ -3,6 +3,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
 import {DM_Serif_Display, Plus_Jakarta_Sans} from 'next/font/google';
 import {locales} from '@/i18n/config';
+import {getSiteUrl} from '@/lib/site';
 
 type Params = Promise<{locale: string}>;
 
@@ -26,12 +27,6 @@ const fontBody = Plus_Jakarta_Sans({
   variable: '--font-body'
 });
 
-function getBaseUrl() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!siteUrl) return 'https://onebbau.de';
-  return siteUrl.replace(/\/+$/, '');
-}
-
 export async function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }
@@ -39,7 +34,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({params}: {params: Params}): Promise<Metadata> {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'metadata'});
-  const baseUrl = getBaseUrl();
+  const baseUrl = getSiteUrl();
   const heroImage = '/images/hero-main.webp';
 
   return {

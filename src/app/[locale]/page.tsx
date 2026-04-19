@@ -9,14 +9,9 @@ import WhyUs from '@/components/WhyUs';
 import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import {getSiteUrl} from '@/lib/site';
 
 type Params = Promise<{locale: string}>;
-
-function getBaseUrl() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!siteUrl) return 'https://onebbau.de';
-  return siteUrl.replace(/\/+$/, '');
-}
 
 export async function generateMetadata({params}: {params: Params}): Promise<Metadata> {
   const {locale} = await params;
@@ -63,7 +58,7 @@ export async function generateMetadata({params}: {params: Params}): Promise<Meta
 
 export default async function Home({params}: {params: Params}) {
   const {locale} = await params;
-  const baseUrl = getBaseUrl();
+  const baseUrl = getSiteUrl();
   const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
   const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
 

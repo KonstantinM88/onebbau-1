@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
+import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ArticleClient from './ArticleClient';
@@ -11,6 +12,7 @@ type Params = Promise<{ locale: string; slug: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
   const isRu = locale === 'ru';
+  const siteUrl = getSiteUrl();
 
   const article = await prisma.newsArticle.findUnique({
     where: { slug },
@@ -49,13 +51,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description,
       type: 'article',
       locale: isRu ? 'ru_RU' : 'de_DE',
-      url: `https://onebbau.de/${locale}/news/${slug}`,
+      url: `${siteUrl}/${locale}/news/${slug}`,
       siteName: 'Onebbau',
       ...(article.coverUrl
         ? {
             images: [
               {
-                url: `https://onebbau.de${article.coverUrl}`,
+                url: `${siteUrl}${article.coverUrl}`,
                 width: 1200,
                 height: 630,
                 alt: title,
@@ -88,6 +90,7 @@ export async function generateStaticParams() {
 export default async function ArticlePage({ params }: { params: Params }) {
   const { locale, slug } = await params;
   const isRu = locale === 'ru';
+  const siteUrl = getSiteUrl();
 
   const article = await prisma.newsArticle.findUnique({ where: { slug } });
 
@@ -104,7 +107,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
     '@type': 'BlogPosting',
     headline: title,
     description: excerpt,
-    url: `https://onebbau.de/${locale}/news/${slug}`,
+    url: `${siteUrl}/${locale}/news/${slug}`,
     datePublished: article.publishedAt.toISOString(),
     dateModified: article.updatedAt.toISOString(),
     inLanguage: isRu ? 'ru' : 'de',
@@ -112,7 +115,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
       ? {
           image: {
             '@type': 'ImageObject',
-            url: `https://onebbau.de${article.coverUrl}`,
+            url: `${siteUrl}${article.coverUrl}`,
             width: article.coverWidth,
             height: article.coverHeight,
           },
@@ -121,7 +124,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
     author: {
       '@type': 'Organization',
       name: 'Onebbau',
-      url: 'https://onebbau.de',
+      url: siteUrl,
     },
     publisher: {
       '@type': 'HomeAndConstructionBusiness',
@@ -135,7 +138,7 @@ export default async function ArticlePage({ params }: { params: Params }) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://onebbau.de/${locale}/news/${slug}`,
+      '@id': `${siteUrl}/${locale}/news/${slug}`,
     },
   };
 
