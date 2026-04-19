@@ -20,12 +20,12 @@ export default function Faq() {
   return (
     <section id="faq" ref={ref} className="bg-anthracite-50/60 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-14">
+        <div className="grid grid-cols-1 gap-10 xl:grid-cols-[0.86fr_1.14fr] xl:gap-14">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="lg:sticky lg:top-24 lg:self-start"
+            className="xl:sticky xl:top-24 xl:self-start"
           >
             <span className="inline-flex items-center rounded-full border border-brand-orange/20 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-brand-orange">
               {t('eyebrow')}
@@ -76,9 +76,9 @@ export default function Faq() {
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                     aria-expanded={isOpen}
-                    className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6 sm:py-6"
+                    className="flex w-full items-start justify-between gap-4 px-4 py-5 text-left sm:px-6 sm:py-6"
                   >
-                    <span className="pr-4 font-heading text-xl leading-7 text-anthracite-900 sm:text-2xl">
+                    <span className="pr-4 font-heading text-lg leading-7 text-anthracite-900 sm:text-2xl">
                       {item.question}
                     </span>
                     <span
@@ -103,7 +103,7 @@ export default function Faq() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.26, ease: 'easeOut' }}
                       >
-                        <div className="px-5 pb-5 pt-0 sm:px-6 sm:pb-6">
+                        <div className="px-4 pb-5 pt-0 sm:px-6 sm:pb-6">
                           <div className="mb-4 h-px bg-gradient-to-r from-brand-orange/30 via-anthracite-200 to-transparent" />
                           <p className="max-w-3xl text-sm leading-7 text-anthracite-600 sm:text-base">
                             {item.answer}

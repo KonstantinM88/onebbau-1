@@ -29,12 +29,12 @@ export default function Testimonials() {
       <div className="absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
+        <div className="grid grid-cols-1 gap-10 xl:grid-cols-[0.8fr_1.2fr] xl:items-start xl:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55 }}
-            className="lg:pr-6"
+            className="xl:pr-2 2xl:pr-6"
           >
             <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-brand-orange">
               {t('eyebrow')}
@@ -66,14 +66,16 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3">
             {items.map((item, index) => (
               <motion.article
                 key={item.name + item.service}
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.08 + index * 0.08 }}
-                className="flex h-full flex-col rounded-[1.75rem] border border-white/10 bg-white/[0.07] p-6 shadow-xl shadow-black/15 backdrop-blur-sm"
+                className={`min-w-0 rounded-[1.75rem] border border-white/10 bg-white/[0.07] p-6 shadow-xl shadow-black/15 backdrop-blur-sm ${
+                  index === items.length - 1 ? 'md:col-span-2 2xl:col-span-1' : ''
+                }`}
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-1 text-brand-orange">
@@ -81,12 +83,12 @@ export default function Testimonials() {
                       <Star key={starIndex} size={16} fill="currentColor" />
                     ))}
                   </div>
-                  <span className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/60">
+                  <span className="max-w-[8.5rem] rounded-full border border-white/10 bg-white/6 px-3 py-1 text-right text-[10px] font-medium uppercase leading-4 tracking-[0.16em] text-white/68 sm:text-[11px]">
                     {item.service}
                   </span>
                 </div>
 
-                <p className="mt-5 flex-1 text-sm leading-7 text-white/78 sm:text-[15px]">
+                <p className="mt-5 text-sm leading-7 text-white/84 sm:text-[15px]">
                   “{item.text}”
                 </p>
 
@@ -99,7 +101,7 @@ export default function Testimonials() {
                         <span>{item.location}</span>
                       </div>
                     </div>
-                    <span className="max-w-[9rem] text-right text-xs leading-5 text-white/48">
+                    <span className="max-w-[9rem] text-right text-xs leading-5 text-white/52">
                       {item.scope}
                     </span>
                   </div>
