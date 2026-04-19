@@ -93,6 +93,37 @@
       }
     ]
   },
+  "testimonials": {
+    "eyebrow": "Kundenstimmen",
+    "sectionTitle": "Wie unsere Arbeit nach Projektende bewertet wird",
+    "intro": "Gerade bei Renovierungen im bewohnten Zuhause oder bei Arbeiten zwischen zwei Mietern zählen Zuverlässigkeit, saubere Abläufe und eine klare Kommunikation. Genau darauf beziehen sich diese Rückmeldungen.",
+    "highlightKicker": "Aus der Praxis",
+    "highlightTitle": "Viele Aufträge kommen über Empfehlungen",
+    "highlightText": "Besonders bei Badezimmern, Mietwohnungen und Außenarbeiten werden wir oft weiterempfohlen, weil Ablauf, Sauberkeit und Preisabsprachen für unsere Kunden nachvollziehbar bleiben.",
+    "items": [
+      {
+        "name": "Familie K.",
+        "location": "Halle-Süd",
+        "service": "Badrenovierung",
+        "scope": "Altbau, 12 Arbeitstage",
+        "text": "Der Ablauf war klar organisiert, Rückfragen wurden schnell beantwortet und am Ende war das Bad jeden Abend wieder ordentlich nutzbar. Gerade im bewohnten Zustand war uns diese Rücksicht sehr wichtig."
+      },
+      {
+        "name": "Herr B.",
+        "location": "Halle-Trotha",
+        "service": "Trockenbau & Malerarbeiten",
+        "scope": "Mietwohnung vor Neuvermietung",
+        "text": "Wir brauchten eine schnelle und saubere Lösung zwischen zwei Mietern. Besichtigung, Angebot und Ausführung liefen ohne unnötige Verzögerung, und kleinere Nacharbeiten wurden direkt mit erledigt."
+      },
+      {
+        "name": "Frau N.",
+        "location": "Merseburg",
+        "service": "Terrasse & Zaun",
+        "scope": "Außenbereich am Reihenhaus",
+        "text": "Das Angebot war nachvollziehbar, Termine wurden eingehalten und es gab keine überraschenden Zusatzkosten. Besonders hilfreich war, dass wir bei Material und Ausführung mehrere sinnvolle Optionen erklärt bekommen haben."
+      }
+    ]
+  },
   "gallery": {
     "sectionTitle": "Referenzen",
     "subtitle": "Einblicke in unsere abgeschlossenen Projekte",
@@ -104,6 +135,40 @@
       { "alt": "Terrassenbau", "label": "Terrasse" },
       { "alt": "Bodenverlegung", "label": "Bodenbelag" },
       { "alt": "Raumrenovierung", "label": "Renovierung" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "sectionTitle": "Häufige Fragen vor dem Start",
+    "intro": "Vor einer Renovierung oder kleineren Baustelle geht es meistens um Termine, Material, Ablauf und Kosten. Hier finden Sie die Fragen, die wir vor Ort und am Telefon am häufigsten hören.",
+    "contactTitle": "Noch etwas unklar?",
+    "contactText": "Wenn Ihre Frage hier nicht dabei ist, antworten wir Ihnen gern direkt auf Ihr konkretes Vorhaben.",
+    "contactCta": "Zum Kontaktformular",
+    "items": [
+      {
+        "question": "Wie schnell erhalten wir nach der Besichtigung ein Angebot?",
+        "answer": "In der Regel innerhalb von 2 bis 5 Werktagen. Bei kleineren Arbeiten geht es oft schneller, bei größeren Projekten prüfen wir zuerst Material, Umfang und Terminfenster, damit das Angebot belastbar ist."
+      },
+      {
+        "question": "Arbeiten Sie auch in bewohnten Wohnungen oder Häusern?",
+        "answer": "Ja. Wir stimmen laute oder staubige Arbeiten vorher ab, schützen Laufwege und hinterlassen den Arbeitsbereich am Tagesende so ordentlich wie möglich. Gerade bei Bad- oder Innenausbauprojekten planen wir den Ablauf deshalb sehr genau."
+      },
+      {
+        "question": "Besorgen Sie Material oder können wir es selbst kaufen?",
+        "answer": "Beides ist möglich. Wenn wir Material beschaffen, sprechen wir Qualität, Optik und Budget vorab mit Ihnen ab. Bereits vorhandenes Material verbauen wir ebenfalls, sofern es technisch geeignet und vollständig vorhanden ist."
+      },
+      {
+        "question": "Übernehmen Sie auch kleinere Reparaturen oder nur komplette Projekte?",
+        "answer": "Wir übernehmen sowohl kleinere Arbeiten als auch komplette Renovierungen, solange Umfang und Terminlage passen. Am besten schicken Sie kurz eine Beschreibung oder Fotos, damit wir den Aufwand realistisch einschätzen können."
+      },
+      {
+        "question": "In welchem Gebiet arbeiten Sie?",
+        "answer": "Unser Schwerpunkt liegt in Halle (Saale) und Umgebung. Einsätze in nahegelegenen Orten wie Merseburg, Kabelsketal oder Landsberg prüfen wir je nach Umfang, Anfahrt und aktueller Auslastung."
+      },
+      {
+        "question": "Wie läuft die Bezahlung ab?",
+        "answer": "Je nach Projekt per Abschlagszahlung, nach Baufortschritt oder nach Abschluss. Das besprechen wir transparent im Angebot, damit es später keine Überraschungen bei der Abrechnung gibt."
+      }
     ]
   },
   "contact": {

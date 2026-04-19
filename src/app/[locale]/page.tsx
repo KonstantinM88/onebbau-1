@@ -6,7 +6,9 @@ import TrustBadges from '@/components/TrustBadges';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import WhyUs from '@/components/WhyUs';
+import Testimonials from '@/components/Testimonials';
 import Gallery from '@/components/Gallery';
+import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import {getSiteUrl} from '@/lib/site';
@@ -88,7 +90,9 @@ export default async function Home({params}: {params: Params}) {
         <About />
         <Services />
         <WhyUs />
+        <Testimonials />
         <Gallery />
+        <Faq />
         <Contact />
       </main>
       <Footer />
