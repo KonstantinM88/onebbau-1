@@ -77,13 +77,13 @@ export default function Testimonials() {
                   index === items.length - 1 ? 'md:col-span-2 2xl:col-span-1' : ''
                 }`}
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-wrap items-start gap-3">
                   <div className="flex items-center gap-1 text-brand-orange">
                     {Array.from({ length: 5 }).map((_, starIndex) => (
                       <Star key={starIndex} size={16} fill="currentColor" />
                     ))}
                   </div>
-                  <span className="max-w-[8.5rem] rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 text-right text-[10px] font-medium uppercase leading-4 tracking-[0.16em] text-white/[0.7] sm:text-[11px]">
+                  <span className="ml-auto inline-flex min-h-11 max-w-[11rem] items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.04] px-3.5 py-1.5 text-center text-[10px] font-medium uppercase leading-[1.2] tracking-[0.12em] text-white/[0.74] sm:max-w-[12rem] sm:text-[11px]">
                     {item.service}
                   </span>
                 </div>
