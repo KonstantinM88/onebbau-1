@@ -2,12 +2,11 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 
 export default function Footer() {
   const t = useTranslations();
   const locale = useLocale();
-  const homePath = `/${locale}`;
-  const sectionHref = (id: string) => `${homePath}#${id}`;
 
   return (
     <footer className="bg-anthracite-900 text-anthracite-300">
@@ -32,14 +31,14 @@ export default function Footer() {
               {[
                 { label: t('nav.home'), href: `/${locale}` },
                 { label: t('nav.about'), href: `/${locale}/about` },
-                { label: t('nav.services'), id: 'services' },
-                { label: t('nav.whyUs'), id: 'why-us' },
+                { label: t('nav.services'), href: `/${locale}/services` },
+                { label: t('nav.whyUs'), href: `/${locale}/why-us` },
                 { label: t('nav.gallery'), id: 'gallery' },
-                { label: t('nav.contact'), id: 'contact' },
+                { label: t('nav.contact'), href: `/${locale}/contact` },
               ].map((item) => (
                 <li key={item.label}>
                   <a
-                    href={item.id ? sectionHref(item.id) : item.href}
+                    href={item.id ? `/${locale}#${item.id}` : item.href}
                     className="text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
                   >
                     {item.label}
@@ -77,10 +76,15 @@ export default function Footer() {
                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
                 {process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de'}
               </a>
-              <div className="flex items-center gap-3 text-sm text-anthracite-400">
+              <a
+                href={COMPANY_MAP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
+              >
                 <MapPin size={15} className="text-brand-orange flex-shrink-0" />
-                Halle (Saale)
-              </div>
+                <span>{COMPANY_STREET_ADDRESS}, {COMPANY_POSTAL_CITY}</span>
+              </a>
             </div>
 
             {/* Legal Links */}

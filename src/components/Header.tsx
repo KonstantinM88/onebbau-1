@@ -8,17 +8,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 
 const navItems = ['about', 'services', 'whyUs', 'gallery', 'news', 'contact'] as const;
-const sectionIds: Record<string, string> = {
-  about: 'about',
-  services: 'services',
-  whyUs: 'why-us',
-  contact: 'contact',
-};
-// These link to separate pages
-const pageLinks: Record<string, string> = {
+const pageLinks: Record<(typeof navItems)[number], string> = {
   about: '/about',
+  services: '/services',
+  whyUs: '/why-us',
   gallery: '/galerie',
   news: '/news',
+  contact: '/contact',
 };
 
 export default function Header() {
@@ -52,9 +48,6 @@ export default function Header() {
     setIsMobileOpen(false);
   };
 
-  const homePath = `/${locale}`;
-  const sectionHref = (sectionId: string) => `${homePath}#${sectionId}`;
-
   return (
     <>
       <header
@@ -80,37 +73,19 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navItems.map((item) => {
-                const pageLink = pageLinks[item];
-                if (pageLink) {
-                  return (
-                    <a
-                      key={item}
-                      href={`/${locale}${pageLink}`}
-                      className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                        useSolidHeader
-                          ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
-                          : 'text-white/80 hover:text-white hover:bg-white/10'
-                      }`}
-                    >
-                      {t(item)}
-                    </a>
-                  );
-                }
-                return (
-                  <a
-                    key={item}
-                    href={sectionHref(sectionIds[item])}
-                    className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                      useSolidHeader
-                        ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {t(item)}
-                  </a>
-                );
-              })}
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`/${locale}${pageLinks[item]}`}
+                  className={`px-3 xl:px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    useSolidHeader
+                      ? 'text-anthracite-600 hover:text-anthracite-900 hover:bg-anthracite-50'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {t(item)}
+                </a>
+              ))}
             </nav>
 
             {/* Right side: Language + CTA */}
@@ -145,7 +120,7 @@ export default function Header() {
 
               {/* CTA Button */}
               <a
-                href={sectionHref('contact')}
+                href={`/${locale}/contact`}
                 className="flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-95"
               >
                 <Phone size={15} />
@@ -189,37 +164,19 @@ export default function Header() {
             </div>
 
             <nav className="flex flex-col px-6 py-8 gap-1">
-              {navItems.map((item, i) => {
-                const pageLink = pageLinks[item];
-                if (pageLink) {
-                  return (
-                    <motion.a
-                      key={item}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                      href={`/${locale}${pageLink}`}
-                      onClick={() => setIsMobileOpen(false)}
-                      className="text-left py-3 px-4 text-lg font-medium text-anthracite-700 hover:text-brand-orange hover:bg-brand-orange/5 rounded-xl transition-all"
-                    >
-                      {t(item)}
-                    </motion.a>
-                  );
-                }
-                return (
-                  <motion.a
-                    key={item}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    href={sectionHref(sectionIds[item])}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="text-left py-3 px-4 text-lg font-medium text-anthracite-700 hover:text-brand-orange hover:bg-brand-orange/5 rounded-xl transition-all"
-                  >
-                    {t(item)}
-                  </motion.a>
-                );
-              })}
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={item}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  href={`/${locale}${pageLinks[item]}`}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="text-left py-3 px-4 text-lg font-medium text-anthracite-700 hover:text-brand-orange hover:bg-brand-orange/5 rounded-xl transition-all"
+                >
+                  {t(item)}
+                </motion.a>
+              ))}
 
               {/* Language Switcher Mobile */}
               <div className="flex gap-2 mt-6 px-4">
@@ -250,7 +207,7 @@ export default function Header() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                href={sectionHref('contact')}
+                href={`/${locale}/contact`}
                 onClick={() => setIsMobileOpen(false)}
                 className="mt-4 mx-4 flex items-center justify-center gap-2 bg-brand-orange text-white py-3.5 rounded-xl text-base font-semibold"
               >

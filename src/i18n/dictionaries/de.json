@@ -136,6 +136,213 @@
       }
     ]
   },
+  "servicesPage": {
+    "hero": {
+      "eyebrow": "Leistungen",
+      "title": "Bau-, Renovierungs- und Außenarbeiten mit klarer Struktur",
+      "lead": "Wir übernehmen Arbeiten für Wohnungen, Häuser, Mietobjekte und Außenbereiche in Halle (Saale) und Umgebung. Entscheidend ist für uns nicht nur, was gebaut oder renoviert wird, sondern wie nachvollziehbar, sauber und planbar ein Projekt insgesamt abläuft.",
+      "primaryCta": "Projekt anfragen",
+      "secondaryCta": "Kontakt aufnehmen",
+      "imageAlt": "Leistungen von Onebbau in Halle (Saale)",
+      "imageTag": "Halle (Saale) & Umgebung",
+      "imageTitle": "Leistungen für Innenbereiche, Mietobjekte und Außenflächen",
+      "imageText": "Gerade bei Renovierungen im bewohnten Zustand oder zwischen zwei Mietern ist ein sinnvoll organisierter Ablauf fast genauso wichtig wie das spätere Ergebnis.",
+      "highlights": [
+        "Persönliche Besichtigung und ehrliche Einschätzung vor Projektbeginn",
+        "Leistungsbereiche von Trockenbau und Malerarbeiten bis Terrasse und Zaun",
+        "Saubere Abstimmung bei Material, Reihenfolge und realistischen Zeitfenstern"
+      ]
+    },
+    "catalogConstructionText": "Innenausbau, Renovierung, Montage und handwerkliche Arbeiten für Wohnungen, Häuser und kleinere Objekte.",
+    "catalogGardenText": "Außenarbeiten, Gartenpflege und Leistungen rund um Bereiche, die schnell wieder nutzbar sein sollen.",
+    "intro": {
+      "title": "Welche Leistungen wir konkret übernehmen",
+      "paragraph1": "Unser Spektrum reicht von einzelnen handwerklichen Arbeiten bis zu zusammenhängenden Renovierungsprojekten. Viele Aufträge kombinieren mehrere Bereiche, etwa Trockenbau, Spachtel- und Malerarbeiten, Bodenbeläge oder Montageleistungen.",
+      "paragraph2": "Wichtig ist uns dabei, dass ein Projekt nicht nur fachlich passt, sondern auch organisatorisch sauber umsetzbar ist. Deshalb schauen wir vor Ort, welche Reihenfolge sinnvoll ist, welche Materialien realistisch sind und wo sich Aufwand, Termine und Nutzung des Objekts gut miteinander verbinden lassen."
+    },
+    "focuses": [
+      {
+        "title": "Renovierungen in bewohnten Wohnungen und Häusern",
+        "text": "Hier geht es oft nicht nur um das eigentliche Gewerk, sondern auch um Rücksicht auf Alltag, Staubschutz, Erreichbarkeit einzelner Räume und einen Zustand, mit dem man während der Arbeiten leben kann."
+      },
+      {
+        "title": "Vorbereitung von Mietwohnungen vor Neuvermietung",
+        "text": "Zwischen zwei Mietern zählt jeder Tag. Wir helfen dabei, Wohnungen oder einzelne Bereiche zügig, ordentlich und ohne unnötige Abstimmungsschleifen wieder in einen guten Zustand zu bringen."
+      },
+      {
+        "title": "Außenarbeiten mit klarer Material- und Ablaufplanung",
+        "text": "Bei Terrassen, Zäunen, Fassaden oder Gartenbereichen müssen Material, Wetter, Zugang und Terminfenster zusammenpassen. Genau deshalb ist die Vorbereitung hier besonders wichtig."
+      }
+    ],
+    "catalogTitle": "Unsere Leistungsbereiche im Überblick",
+    "catalogIntro": "Nicht jedes Projekt braucht ein großes Bauvorhaben. Häufig sind es mehrere kleinere oder mittlere Gewerke, die sauber zusammengeführt werden müssen. Genau dafür ist ein breit aufgestellter Handwerks- und Renovierungsbetrieb besonders sinnvoll.",
+    "executionTitle": "Wie wir Leistungen praktisch organisieren",
+    "executionIntro": "Je nach Projekt unterscheiden sich Umfang und Reihenfolge. Trotzdem gibt es ein paar Grundsätze, die fast immer dafür sorgen, dass Arbeit und Kommunikation ruhiger laufen.",
+    "execution": [
+      {
+        "title": "Vor Ort prüfen statt nur grob schätzen",
+        "text": "Wir schauen uns an, welche Bedingungen wirklich vorliegen, ob Folgearbeiten nötig sind und welche Leistung wirtschaftlich und technisch Sinn ergibt."
+      },
+      {
+        "title": "Arbeiten sinnvoll bündeln",
+        "text": "Wenn mehrere Gewerke zusammenkommen, planen wir die Reihenfolge so, dass es später nicht zu unnötigen Rückschritten, Wartezeiten oder Doppelarbeit kommt."
+      },
+      {
+        "title": "Sauber abschließen und übergabefähig arbeiten",
+        "text": "Ob Wohnung, Haus oder Außenfläche: Ziel ist nicht nur die Fertigstellung, sondern ein Zustand, den Sie direkt übernehmen, nutzen oder weitervermieten können."
+      }
+    ],
+    "serviceArea": {
+      "title": "Wo wir Leistungen anbieten",
+      "text": "Unser Schwerpunkt liegt in Halle (Saale). Projekte in der Umgebung übernehmen wir abhängig von Umfang, Terminlage und Erreichbarkeit, damit Besichtigungen, Rückfragen und eventuelle Nacharbeiten ohne unnötige Verzögerungen möglich bleiben.",
+      "locations": ["Halle (Saale)", "Merseburg", "Kabelsketal", "Landsberg", "Teutschenthal", "Bad Lauchstädt"]
+    },
+    "seoTitle": "Leistungen, bei denen Ablauf und Ergebnis zusammenpassen",
+    "seoParagraphs": [
+      "Viele Kunden suchen nicht nur einen einzelnen Handwerker, sondern eine Lösung, bei der mehrere Arbeitsschritte zusammenpassen. Genau dort liegt ein großer Teil unseres Werts: Wir helfen dabei, Leistungen so zu kombinieren, dass das Projekt nicht unnötig kompliziert wird.",
+      "Das betrifft besonders Innenausbau, Renovierungen vor Neuvermietung, Arbeiten in bewohnten Wohnungen und Außenprojekte, bei denen Material, Wetter und Zugänglichkeit eine Rolle spielen. In solchen Situationen ist eine klare Einschätzung vor Beginn oft entscheidender als ein besonders schnell formuliertes Angebot.",
+      "Wenn Sie Leistungen suchen, die in Halle (Saale) und Umgebung nicht nur fachlich, sondern auch organisatorisch sauber umgesetzt werden sollen, können Sie uns Ihr Projekt direkt schildern. Auf dieser Basis sagen wir offen, was sinnvoll ist und wie es sich vernünftig umsetzen lässt."
+    ]
+  },
+  "whyUsPage": {
+    "hero": {
+      "eyebrow": "Vorteile",
+      "title": "Warum Kunden Onebbau gerade für sensible Projekte wählen",
+      "lead": "Viele Anfragen entstehen dort, wo nicht nur ein Ergebnis zählt, sondern auch der Weg dorthin: bei bewohnten Wohnungen, vor einer Neuvermietung, bei kleineren Umbauten oder bei Außenarbeiten mit engem Zeitfenster. Genau in solchen Situationen werden Zuverlässigkeit, Ordnung und klare Kommunikation besonders wichtig.",
+      "primaryCta": "Kontakt aufnehmen",
+      "secondaryCta": "Kundenstimmen ansehen",
+      "imageAlt": "Warum Kunden Onebbau wählen",
+      "imageTag": "Arbeitsweise & Vertrauen",
+      "imageTitle": "Verlässlichkeit zeigt sich nicht nur am Ende, sondern während des gesamten Projekts",
+      "imageText": "Ein gutes Ergebnis wirkt nur dann wirklich professionell, wenn auch Angebot, Abstimmung, Baustellenorganisation und Übergabe nachvollziehbar sind.",
+      "cardTitle": "Klarer Ansprechpartner",
+      "cardText": "Gerade bei Rückfragen oder kleineren Anpassungen ist es ein Unterschied, ob Entscheidungen direkt geklärt werden oder zwischen mehreren Stellen hängen bleiben.",
+      "metricTitle": "Worum es Kunden oft wirklich geht",
+      "metricText": "Nicht nur schön renoviert, sondern realistisch geplant, sauber ausgeführt und ohne unnötige Reibung im Ablauf.",
+      "highlights": [
+        "Klare Kommunikation vor Beginn und während der Ausführung",
+        "Saubere Arbeitsweise gerade in sensiblen oder bewohnten Objekten",
+        "Realistische Preise und Zusagen, die im Projektverlauf tragfähig bleiben"
+      ]
+    },
+    "proofTitle": "Was unsere Arbeitsweise im Alltag besser macht",
+    "proofIntro": "Der Unterschied zeigt sich meist nicht in großen Worten, sondern in kleinen Punkten, die für Kunden während der Umsetzung spürbar werden.",
+    "proofs": [
+      {
+        "title": "Realistische Einschätzung statt Schönrechnen",
+        "text": "Wir sprechen offen an, was machbar ist, wo Risiken liegen und welche Variante wirtschaftlich sinnvoll bleibt. Das hilft, spätere Enttäuschungen und Nachverhandlungen zu vermeiden."
+      },
+      {
+        "title": "Kurze Wege bei Fragen und Änderungen",
+        "text": "Wenn unterwegs Punkte auftauchen, die abgestimmt werden müssen, halten wir die Kommunikation bewusst direkt. Das spart Zeit und reduziert Missverständnisse."
+      },
+      {
+        "title": "Ordnung auf der Baustelle als Teil der Leistung",
+        "text": "Sauberkeit, Schutz von Laufwegen und ein geordneter Zustand während der Arbeiten sind für uns kein Extra, sondern ein Teil professioneller Ausführung."
+      }
+    ],
+    "reasonsTitle": "Die Gründe, warum Kunden uns weiterempfehlen",
+    "reasonsIntro": "Ein großer Teil neuer Aufträge kommt über Empfehlungen. Meistens nicht nur, weil etwas gut aussieht, sondern weil Kommunikation, Termine und Preisrahmen insgesamt stimmig waren.",
+    "workflowTitle": "Wie wir Vertrauen im Projektverlauf absichern",
+    "workflowIntro": "Verlässlichkeit entsteht nicht durch eine einzige Aussage, sondern durch einen Ablauf, in dem wichtige Dinge früh geklärt und später sauber eingehalten werden.",
+    "workflow": [
+      {
+        "title": "Vor dem Start sauber einordnen",
+        "text": "Wir klären vor Beginn, was wirklich gemacht werden soll, welche Reihenfolge sinnvoll ist und wie das Projekt in den Alltag oder die Objektübergabe passt."
+      },
+      {
+        "title": "Während der Arbeiten erreichbar bleiben",
+        "text": "Kunden müssen nicht erst lange nach Zuständigkeiten suchen. Rückfragen und relevante Entscheidungen werden direkt und nachvollziehbar angesprochen."
+      },
+      {
+        "title": "Zusagen nicht ständig neu verhandeln",
+        "text": "Wenn Termine, Umfang oder Material abgestimmt sind, halten wir diesen Rahmen stabil. Änderungen werden offen besprochen statt stillschweigend verschoben."
+      },
+      {
+        "title": "Ergebnis übergabefähig abschließen",
+        "text": "Am Ende zählt nicht nur, dass etwas technisch erledigt ist, sondern dass der Zustand für Nutzung, Vermietung oder Anschlussgewerke wirklich passt."
+      }
+    ],
+    "audienceTitle": "Für wen diese Arbeitsweise besonders wichtig ist",
+    "audienceIntro": "Nicht jedes Projekt ist gleich sensibel. In manchen Situationen fällt jedoch besonders stark auf, ob ein Betrieb organisiert und verlässlich arbeitet.",
+    "audiences": [
+      {
+        "title": "Eigentümer und Privatkunden im bewohnten Zuhause",
+        "text": "Wenn während der Arbeiten weiter gewohnt wird, stören ungeordnete Abläufe besonders stark. Deshalb sind Rücksicht, Planbarkeit und Sauberkeit dort entscheidend."
+      },
+      {
+        "title": "Vermieter mit engem Übergabefenster",
+        "text": "Zwischen Auszug und Neuvermietung ist oft wenig Zeit. Hier kommt es darauf an, dass Entscheidungen schnell fallen und Arbeiten ohne unnötige Verzögerung umgesetzt werden."
+      },
+      {
+        "title": "Kleinere Unternehmen mit laufendem Betrieb",
+        "text": "Auch bei lokalen Umbauten in Gewerbeobjekten müssen Termine, Zugang und Störungen sauber eingeplant werden. Genau dort zahlt sich klare Abstimmung besonders aus."
+      }
+    ]
+  },
+  "contactPage": {
+    "hero": {
+      "eyebrow": "Kontakt",
+      "title": "Kontakt für Bau-, Renovierungs- und Außenarbeiten",
+      "lead": "Wenn Sie ein Projekt in Halle (Saale) oder Umgebung planen, können Sie uns telefonisch, per E-Mail, über WhatsApp oder direkt über das Formular schreiben. Je klarer die Ausgangslage, desto schneller können wir sagen, was sinnvoll ist und wie ein nächster Schritt aussieht.",
+      "primaryCta": "Zum Formular",
+      "secondaryCta": "Direkt anrufen",
+      "imageAlt": "Kontakt zu Onebbau für Bau- und Renovierungsarbeiten",
+      "imageTag": "Schnelle Anfrage",
+      "imageTitle": "Kurze Wege vom ersten Kontakt bis zur Besichtigung",
+      "imageText": "Viele Projekte beginnen mit ein paar Fotos, einer kurzen Beschreibung und der Frage, wie sich Umfang, Zeitraum und gewünschtes Ergebnis realistisch einschätzen lassen.",
+      "phoneLabel": "Telefon",
+      "emailLabel": "E-Mail",
+      "highlights": [
+        "Unverbindliche Anfrage für Wohnungen, Häuser und Außenbereiche",
+        "Telefon, E-Mail und WhatsApp für schnelle Rückfragen",
+        "Besichtigungen in Halle (Saale) und je nach Projekt auch im Umland"
+      ]
+    },
+    "channelsTitle": "Wie Sie uns am schnellsten erreichen",
+    "channelsIntro": "Je nach Situation ist ein anderer Kontaktweg sinnvoll. Für kurze Rückfragen reicht oft ein Anruf oder WhatsApp, für größere Projekte helfen ein paar Eckdaten per Nachricht oder E-Mail.",
+    "channels": [
+      {
+        "title": "Telefon",
+        "text": "Gut für direkte Rückfragen, Terminabstimmung und eine erste kurze Einschätzung, ob Ihr Vorhaben in unser Spektrum passt."
+      },
+      {
+        "title": "E-Mail",
+        "text": "Sinnvoll, wenn Sie Bilder, eine kurze Beschreibung oder einen etwas ausführlicheren Überblick zum Projekt schicken möchten."
+      },
+      {
+        "title": "WhatsApp",
+        "text": "Praktisch für schnelle Fotos, kurze Rückfragen und eine unkomplizierte erste Kontaktaufnahme unterwegs."
+      }
+    ],
+    "responseTitle": "Was nach Ihrer Anfrage passiert",
+    "responseIntro": "Wir versuchen Anfragen zügig einzuordnen, damit Sie schnell wissen, ob ein Projekt zeitlich und fachlich zu uns passt und welcher nächste Schritt sinnvoll ist.",
+    "response": [
+      {
+        "title": "Erste Rückmeldung",
+        "text": "Bei klaren Anfragen oft kurzfristig, bei umfangreicheren Projekten nach kurzer Sichtung der Angaben und Bilder."
+      },
+      {
+        "title": "Besichtigung",
+        "text": "Wenn das Projekt in Frage kommt, schauen wir uns die Situation vor Ort an und klären offene Punkte direkt."
+      },
+      {
+        "title": "Angebot oder Einschätzung",
+        "text": "Danach erhalten Sie eine realistische Einschätzung oder ein Angebot, das auf den tatsächlichen Bedingungen basiert."
+      }
+    ],
+    "regionTitle": "Unser Einsatzgebiet",
+    "regionText": "Schwerpunkt ist Halle (Saale) mit Einsätzen in der näheren Umgebung. Je nach Umfang und Terminlage prüfen wir Projekte auch in Merseburg, Kabelsketal, Landsberg und weiteren nahegelegenen Orten.",
+    "checklistTitle": "Welche Informationen für eine Anfrage hilfreich sind",
+    "checklistIntro": "Je genauer die Ausgangslage beschrieben ist, desto schneller lässt sich ein Projekt sinnvoll einordnen. Oft reichen schon ein paar Punkte, um den nächsten Schritt klarer zu machen.",
+    "checklist": [
+      "Welche Arbeiten geplant sind und ob mehrere Gewerke zusammenkommen",
+      "Ob das Objekt bewohnt ist, leer steht oder zwischen zwei Mietern übergeben wird",
+      "Fotos vom aktuellen Zustand, wenn diese verfügbar sind",
+      "Falls relevant: gewünschter Zeitraum oder ein fester Terminrahmen",
+      "Besondere Punkte wie Materialwünsche, Zugänglichkeit oder laufende Nutzung"
+    ]
+  },
   "services": {
     "sectionTitle": "Unsere Leistungen",
     "construction": {
@@ -271,6 +478,7 @@
     "title": "Kontaktieren Sie uns",
     "subtitle": "Sie planen ein Bau- oder Renovierungsprojekt? Kontaktieren Sie uns gerne für eine unverbindliche Beratung.",
     "region": "Unser Einsatzgebiet: Halle (Saale) und Umgebung",
+    "address": "Adresse",
     "form": {
       "name": "Ihr Name",
       "email": "E-Mail-Adresse",

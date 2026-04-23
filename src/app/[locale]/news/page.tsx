@@ -1,6 +1,7 @@
 // src/app/[locale]/news/page.tsx
 import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
+import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -74,6 +75,8 @@ export default async function NewsPage({ params }: { params: Params }) {
       name: 'Onebbau',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: COMPANY_STREET_ADDRESS,
+        postalCode: '06130',
         addressLocality: 'Halle (Saale)',
         addressRegion: 'Sachsen-Anhalt',
         addressCountry: 'DE',

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { prisma } from '@/lib/prisma';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import GalerieClient from './GalerieClient';
 
 type Params = Promise<{ locale: string }>;
@@ -71,6 +72,8 @@ export default async function GaleriePage({ params }: { params: Params }) {
       name: 'Onebbau',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: COMPANY_STREET_ADDRESS,
+        postalCode: '06130',
         addressLocality: 'Halle (Saale)',
         addressRegion: 'Sachsen-Anhalt',
         addressCountry: 'DE',

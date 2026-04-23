@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle, PhoneCall } from 'lucide-react';
+import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -136,15 +137,25 @@ export default function Contact() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
+              <a
+                href={COMPANY_MAP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-4 group"
+              >
                 <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
                   <MapPin size={20} className="text-brand-orange" />
                 </div>
                 <div>
-                  <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">Region</p>
-                  <p className="text-anthracite-800 font-medium">Halle (Saale) und Umgebung</p>
+                  <p className="text-xs text-anthracite-400 uppercase tracking-wider font-medium">{t('address')}</p>
+                  <p className="text-anthracite-800 font-medium transition-colors group-hover:text-brand-orange">
+                    {COMPANY_STREET_ADDRESS}
+                  </p>
+                  <p className="text-anthracite-600 text-sm">
+                    {COMPANY_POSTAL_CITY}
+                  </p>
                 </div>
-              </div>
+              </a>
             </div>
           </motion.div>
 

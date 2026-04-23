@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
+import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -131,6 +132,8 @@ export default async function ArticlePage({ params }: { params: Params }) {
       name: 'Onebbau',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: COMPANY_STREET_ADDRESS,
+        postalCode: '06130',
         addressLocality: 'Halle (Saale)',
         addressRegion: 'Sachsen-Anhalt',
         addressCountry: 'DE',

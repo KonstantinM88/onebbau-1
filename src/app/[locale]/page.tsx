@@ -11,6 +11,7 @@ import Gallery from '@/components/Gallery';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import {COMPANY_STREET_ADDRESS} from '@/lib/contact';
 import {getSiteUrl} from '@/lib/site';
 
 type Params = Promise<{locale: string}>;
@@ -74,6 +75,8 @@ export default async function Home({params}: {params: Params}) {
     areaServed: 'Halle (Saale) und Umgebung',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: COMPANY_STREET_ADDRESS,
+      postalCode: '06130',
       addressLocality: 'Halle (Saale)',
       addressRegion: 'Sachsen-Anhalt',
       addressCountry: 'DE',

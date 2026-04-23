@@ -4,56 +4,48 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import {
   ArrowRight,
+  Award,
+  Banknote,
   CheckCircle2,
   ChevronRight,
-  ClipboardCheck,
-  Hammer,
+  Clock,
   Home,
   MapPin,
   MessageSquareMore,
   ShieldCheck,
+  Sparkles,
+  Users,
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
-import { COMPANY_STREET_ADDRESS } from '@/lib/contact';
 import { getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
 
-type AboutPageSectionItem = {
+type WhyUsPageCard = {
   title: string;
   text: string;
 };
 
-type AboutPageStat = {
-  value: string;
-  label: string;
-};
-
-type AboutPageProcess = {
+type WhyUsPageStep = {
   title: string;
   text: string;
 };
 
-type AboutPageAudience = {
-  title: string;
-  text: string;
-};
-
-const valueIcons = [ShieldCheck, ClipboardCheck, MessageSquareMore];
-const audienceIcons = [Home, Hammer, CheckCircle2];
+const reasonIcons = [Award, Clock, Sparkles, Banknote, Users];
+const proofIcons = [ShieldCheck, MessageSquareMore, Home];
 
 const metaTitles: Record<string, string> = {
-  de: 'Über Onebbau | Bauunternehmen in Halle (Saale)',
-  ru: 'О компании Onebbau | Строительные работы в Halle (Saale)',
+  de: 'Warum Onebbau | Vorteile, Ablauf und Arbeitsweise',
+  ru: 'Почему Onebbau | Преимущества, подход и организация работ',
 };
 
 const metaDescriptions: Record<string, string> = {
-  de: 'Lernen Sie Onebbau kennen: Bau-, Renovierungs- und Handwerksarbeiten in Halle (Saale), klare Abläufe, persönliche Beratung und saubere Ausführung.',
-  ru: 'Узнайте больше о Onebbau: строительные и ремонтные работы в Halle (Saale), понятный процесс, личная консультация и аккуратное исполнение.',
+  de: 'Warum Kunden Onebbau wählen: klare Kommunikation, saubere Ausführung, realistische Preise und verlässliche Abläufe bei Bau- und Renovierungsarbeiten in Halle (Saale).',
+  ru: 'Почему клиенты выбирают Onebbau: понятная коммуникация, аккуратное исполнение, реалистичная цена и надёжная организация строительных и ремонтных работ в Halle (Saale).',
 };
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -61,16 +53,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const lang = locale === 'ru' ? 'ru' : 'de';
   const title = metaTitles[lang];
   const description = metaDescriptions[lang];
-  const aboutImage = '/uploads/onebbau_about_banner_desktop_1800x2100.webp';
+  const image = '/uploads/onebbau_logo_banner_desktop_1800x2100.webp';
 
   return {
     title,
     description,
     alternates: {
-      canonical: `/${lang}/about`,
+      canonical: `/${lang}/why-us`,
       languages: {
-        de: '/de/about',
-        ru: '/ru/about',
+        de: '/de/why-us',
+        ru: '/ru/why-us',
       },
     },
     openGraph: {
@@ -78,11 +70,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description,
       type: 'website',
       locale: lang === 'de' ? 'de_DE' : 'ru_RU',
-      url: `/${lang}/about`,
+      url: `/${lang}/why-us`,
       siteName: 'Onebbau',
       images: [
         {
-          url: aboutImage,
+          url: image,
           width: 1200,
           height: 630,
           alt: title,
@@ -93,7 +85,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       card: 'summary_large_image',
       title,
       description,
-      images: [aboutImage],
+      images: [image],
     },
     robots: {
       index: true,
@@ -102,37 +94,31 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function AboutPage({ params }: { params: Params }) {
+export default async function WhyUsPage({ params }: { params: Params }) {
   const { locale } = await params;
   const lang = locale === 'ru' ? 'ru' : 'de';
-  const t = await getTranslations({ locale, namespace: 'aboutPage' });
+  const t = await getTranslations({ locale, namespace: 'whyUsPage' });
+  const whyUs = await getTranslations({ locale, namespace: 'whyUs' });
   const faq = await getTranslations({ locale, namespace: 'faq' });
   const siteUrl = getSiteUrl();
-  const pageUrl = `${siteUrl}/${lang}/about`;
-  const phone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
-  const email = process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de';
-  const values = t.raw('values') as AboutPageSectionItem[];
-  const processSteps = t.raw('process') as AboutPageProcess[];
-  const audiences = t.raw('audiences') as AboutPageAudience[];
-  const stats = t.raw('stats') as AboutPageStat[];
-  const faqItems = faq.raw('items') as Array<{ question: string; answer: string }>;
+  const pageUrl = `${siteUrl}/${lang}/why-us`;
+  const reasons = whyUs.raw('items') as WhyUsPageCard[];
+  const proofs = t.raw('proofs') as WhyUsPageCard[];
+  const workflow = t.raw('workflow') as WhyUsPageStep[];
+  const audiences = t.raw('audiences') as WhyUsPageCard[];
   const heroHighlights = t.raw('hero.highlights') as string[];
+  const faqItems = faq.raw('items') as Array<{ question: string; answer: string }>;
 
   const jsonLd = [
     {
       '@context': 'https://schema.org',
-      '@type': 'AboutPage',
+      '@type': 'WebPage',
       name: metaTitles[lang],
       description: metaDescriptions[lang],
       url: pageUrl,
       inLanguage: lang,
       isPartOf: {
         '@type': 'WebSite',
-        name: 'Onebbau',
-        url: siteUrl,
-      },
-      about: {
-        '@type': 'HomeAndConstructionBusiness',
         name: 'Onebbau',
         url: siteUrl,
       },
@@ -172,23 +158,6 @@ export default async function AboutPage({ params }: { params: Params }) {
       '@type': 'HomeAndConstructionBusiness',
       name: 'Onebbau',
       url: siteUrl,
-      email,
-      telephone: phone,
-      image: `${siteUrl}/uploads/onebbau_about_banner_desktop_1800x2100.webp`,
-      areaServed: [
-        'Halle (Saale)',
-        'Merseburg',
-        'Kabelsketal',
-        'Landsberg',
-      ],
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: COMPANY_STREET_ADDRESS,
-        postalCode: '06130',
-        addressLocality: 'Halle (Saale)',
-        addressRegion: 'Sachsen-Anhalt',
-        addressCountry: 'DE',
-      },
       description: metaDescriptions[lang],
       knowsAbout: [
         'Badsanierung',
@@ -196,7 +165,7 @@ export default async function AboutPage({ params }: { params: Params }) {
         'Malerarbeiten',
         'Fassadenarbeiten',
         'Terrassenbau',
-        'Fenster- und Türenmontage',
+        'Renovierungsarbeiten',
       ],
     },
   ];
@@ -207,28 +176,28 @@ export default async function AboutPage({ params }: { params: Params }) {
 
       <main className="min-h-screen bg-white pt-24 sm:pt-28">
         <section className="relative overflow-hidden bg-[#17181c] pb-16 pt-12 text-white sm:pb-20 sm:pt-16">
-          <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-brand-orange/[0.18] via-brand-orange/[0.05] to-transparent" />
-          <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-brand-orange/[0.14] blur-3xl" />
-          <div className="absolute right-0 top-12 h-80 w-80 rounded-full bg-white/[0.06] blur-3xl" />
+          <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-brand-orange/[0.16] via-brand-orange/[0.05] to-transparent" />
+          <div className="absolute -left-24 top-14 h-72 w-72 rounded-full bg-brand-orange/[0.12] blur-3xl" />
+          <div className="absolute right-0 top-16 h-80 w-80 rounded-full bg-white/[0.06] blur-3xl" />
 
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <nav
               aria-label="Breadcrumb"
               className="mb-8 flex items-center gap-2 text-sm text-white/60 sm:mb-10"
             >
-              <Link href={`/${lang}`} className="hover:text-white transition-colors">
+              <Link href={`/${lang}`} className="transition-colors hover:text-white">
                 {lang === 'de' ? 'Startseite' : 'Главная'}
               </Link>
               <ChevronRight size={14} />
               <span className="text-white/85">{t('hero.title')}</span>
             </nav>
 
-            <div className="grid min-w-0 grid-cols-1 gap-10 lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.96fr)] xl:items-start">
-              <div className="min-w-0 xl:max-w-[40rem] xl:pr-4">
+            <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] xl:items-start xl:gap-12">
+              <div className="min-w-0 xl:max-w-[40rem]">
                 <span className="inline-flex rounded-full border border-white/[0.14] bg-white/[0.05] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange">
                   {t('hero.eyebrow')}
                 </span>
-                <h1 className="mt-5 max-w-[12ch] font-heading text-[clamp(2.8rem,9vw,5.4rem)] leading-[0.94] tracking-[-0.02em] text-white">
+                <h1 className="mt-5 max-w-[11ch] font-heading text-[clamp(2.8rem,8vw,5rem)] leading-[0.95] tracking-[-0.02em] text-white">
                   {t('hero.title')}
                 </h1>
                 <p className="mt-6 max-w-2xl text-base leading-8 text-white/[0.76] sm:text-lg">
@@ -248,15 +217,15 @@ export default async function AboutPage({ params }: { params: Params }) {
                 </ul>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href="#contact"
+                  <Link
+                    href={`/${lang}/contact`}
                     className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-orange-dark"
                   >
                     {t('hero.primaryCta')}
                     <ArrowRight size={16} />
-                  </a>
+                  </Link>
                   <a
-                    href={`/${lang}/galerie`}
+                    href="#reviews"
                     className="inline-flex items-center justify-center rounded-full border border-white/[0.14] bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/[0.08]"
                   >
                     {t('hero.secondaryCta')}
@@ -265,29 +234,26 @@ export default async function AboutPage({ params }: { params: Params }) {
               </div>
 
               <div className="relative min-w-0">
-                <div className="absolute -left-6 top-10 hidden h-40 w-40 rounded-full border border-white/[0.08] 2xl:block" />
-                <div className="absolute -right-10 bottom-6 hidden h-48 w-48 rounded-full border border-brand-orange/[0.18] 2xl:block" />
-
                 <div className="relative overflow-hidden rounded-[2.2rem] border border-white/[0.12] bg-white/[0.04] shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
-                  <div className="relative aspect-[4/5] sm:aspect-[16/11] xl:aspect-[6/7]">
+                  <div className="relative aspect-[4/5] sm:aspect-[16/10] xl:aspect-[6/7]">
                     <Image
-                      src="/uploads/onebbau_about_banner_mobile_1440x1800.webp"
+                      src="/uploads/onebbau_logo_banner_mobile_1440x1800.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
                       sizes="100vw"
-                      className="object-cover object-center sm:hidden"
+                      className="object-cover sm:hidden"
                     />
                     <Image
-                      src="/uploads/onebbau_about_banner_desktop_1800x2100.webp"
+                      src="/uploads/onebbau_logo_banner_desktop_1800x2100.webp"
                       alt={t('hero.imageAlt')}
                       fill
                       priority
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 42vw"
-                      className="hidden object-cover object-center sm:block"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 44vw"
+                      className="hidden object-cover sm:block"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111214]/72 via-[#111214]/28 to-[#111214]/14 sm:from-[#111214]/94 sm:via-[#111214]/34" />
-                    <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#111214]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111214]/72 via-[#111214]/28 to-[#111214]/18 sm:from-[#111214]/95 sm:via-[#111214]/36" />
+                    <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#111214]/64 to-transparent" />
 
                     <div className="absolute left-4 top-4 rounded-full border border-white/[0.14] bg-[#111214]/60 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-orange backdrop-blur-sm sm:left-6 sm:top-6 sm:text-[11px]">
                       {t('hero.imageTag')}
@@ -317,144 +283,49 @@ export default async function AboutPage({ params }: { params: Params }) {
                   </div>
                 </div>
 
-                <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="rounded-[1.6rem] border border-white/[0.12] bg-[#202227] p-5 shadow-2xl shadow-black/[0.24]">
                     <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-orange">
-                      {t('hero.floatingCardTitle')}
+                      {t('hero.cardTitle')}
                     </p>
                     <p className="mt-3 text-sm leading-7 text-white/[0.78]">
-                      {t('hero.floatingCardText')}
+                      {t('hero.cardText')}
                     </p>
                   </div>
                   <div className="rounded-[1.6rem] border border-white/[0.12] bg-white/[0.06] p-5 shadow-2xl shadow-black/[0.18]">
-                    <p className="font-heading text-4xl text-white">
-                      {t('hero.metricValue')}
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-orange">
+                      {t('hero.metricTitle')}
                     </p>
-                    <p className="mt-2 text-sm leading-6 text-white/[0.7]">
-                      {t('hero.metricLabel')}
+                    <p className="mt-3 text-sm leading-7 text-white/[0.72]">
+                      {t('hero.metricText')}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div className="mt-10 grid grid-cols-2 gap-4 lg:mt-12 lg:grid-cols-4">
-              {stats.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[1.75rem] border border-white/[0.12] bg-white/[0.05] p-5 shadow-xl shadow-black/[0.16]"
-                >
-                  <p className="font-heading text-3xl text-white sm:text-4xl">{item.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-white/[0.68]">{item.label}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
         <section className="py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.92fr] lg:gap-16">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
               <div>
                 <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
-                  {t('story.title')}
-                </h2>
-                <div className="mt-6 space-y-5 text-base leading-8 text-anthracite-600">
-                  <p>{t('story.paragraph1')}</p>
-                  <p>{t('story.paragraph2')}</p>
-                  <p>{t('story.paragraph3')}</p>
-                </div>
-              </div>
-
-              <div className="rounded-[2rem] border border-anthracite-200 bg-anthracite-50 p-6 shadow-xl shadow-black/[0.04]">
-                <h3 className="font-heading text-2xl text-anthracite-900">
-                  {t('serviceArea.title')}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
-                  {t('serviceArea.text')}
-                </p>
-                <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {(t.raw('serviceArea.locations') as string[]).map((location) => (
-                    <li
-                      key={location}
-                      className="flex items-center gap-2 rounded-xl border border-anthracite-200 bg-white px-4 py-3 text-sm font-medium text-anthracite-700"
-                    >
-                      <MapPin size={16} className="text-brand-orange" />
-                      {location}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-anthracite-50/65 py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
-              <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
-                {t('valuesTitle')}
-              </h2>
-              <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
-                {t('valuesIntro')}
-              </p>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
-              {values.map((item, index) => {
-                const Icon = valueIcons[index] || ShieldCheck;
-
-                return (
-                  <article
-                    key={item.title}
-                    className="rounded-[1.75rem] border border-anthracite-200 bg-white p-6 shadow-lg shadow-black/[0.03]"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange">
-                      <Icon size={22} />
-                    </div>
-                    <h3 className="mt-5 font-heading text-2xl text-anthracite-900">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
-                      {item.text}
-                    </p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.88fr_1.12fr]">
-              <div>
-                <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
-                  {t('audiencesTitle')}
+                  {t('proofTitle')}
                 </h2>
                 <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
-                  {t('audiencesIntro')}
+                  {t('proofIntro')}
                 </p>
-                <div className="mt-8 rounded-[1.75rem] border border-anthracite-200 bg-anthracite-50 p-6">
-                  <h3 className="font-heading text-2xl text-anthracite-900">
-                    {t('audiencesHighlight.title')}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
-                    {t('audiencesHighlight.text')}
-                  </p>
-                </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {audiences.map((item, index) => {
-                  const Icon = audienceIcons[index] || Home;
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+                {proofs.map((item, index) => {
+                  const Icon = proofIcons[index] || ShieldCheck;
 
                   return (
                     <article
                       key={item.title}
-                      className={`rounded-[1.75rem] border border-anthracite-200 bg-white p-6 shadow-lg shadow-black/[0.03] ${
-                        index === audiences.length - 1 ? 'sm:col-span-2' : ''
-                      }`}
+                      className="rounded-[1.75rem] border border-anthracite-200 bg-anthracite-50 p-6 shadow-lg shadow-black/[0.03]"
                     >
                       <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange">
                         <Icon size={22} />
@@ -473,34 +344,112 @@ export default async function AboutPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <section className="bg-anthracite-950 py-16 text-white sm:py-20">
+        <section className="bg-anthracite-50/65 py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <h2 className="font-heading text-3xl sm:text-4xl">
-                {t('processTitle')}
+              <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
+                {t('reasonsTitle')}
               </h2>
-              <p className="mt-4 text-base leading-8 text-white/[0.74] sm:text-lg">
-                {t('processIntro')}
+              <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
+                {t('reasonsIntro')}
               </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-4">
-              {processSteps.map((item, index) => (
-                <article
-                  key={item.title}
-                  className="rounded-[1.75rem] border border-white/[0.12] bg-white/[0.05] p-6 shadow-xl shadow-black/[0.14]"
-                >
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-orange">
-                    0{index + 1}
-                  </p>
-                  <h3 className="mt-4 font-heading text-2xl text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-white/[0.72] sm:text-base">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-5">
+              {reasons.map((item, index) => {
+                const Icon = reasonIcons[index] || Award;
+
+                return (
+                  <article
+                    key={item.title}
+                    className={`rounded-[1.75rem] border border-anthracite-200 bg-white p-6 shadow-lg shadow-black/[0.03] ${
+                      index === reasons.length - 1 ? 'sm:col-span-2 xl:col-span-1' : ''
+                    }`}
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-orange/10 text-brand-orange">
+                      <Icon size={22} />
+                    </div>
+                    <h3 className="mt-5 font-heading text-2xl text-anthracite-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
+                      {item.text}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-anthracite-950 py-16 text-white sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
+              <div>
+                <h2 className="font-heading text-3xl sm:text-4xl">
+                  {t('workflowTitle')}
+                </h2>
+                <p className="mt-4 text-base leading-8 text-white/[0.74] sm:text-lg">
+                  {t('workflowIntro')}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {workflow.map((item, index) => (
+                  <article
+                    key={item.title}
+                    className={`rounded-[1.75rem] border border-white/[0.12] bg-white/[0.05] p-6 shadow-xl shadow-black/[0.14] ${
+                      index === workflow.length - 1 ? 'sm:col-span-2' : ''
+                    }`}
+                  >
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-orange">
+                      0{index + 1}
+                    </p>
+                    <h3 className="mt-4 font-heading text-2xl text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-white/[0.72] sm:text-base">
+                      {item.text}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_0.94fr] lg:gap-16">
+              <div>
+                <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
+                  {t('audienceTitle')}
+                </h2>
+                <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
+                  {t('audienceIntro')}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-5">
+                {audiences.map((item) => (
+                  <article
+                    key={item.title}
+                    className="rounded-[1.75rem] border border-anthracite-200 bg-anthracite-50 p-6 shadow-lg shadow-black/[0.03]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <MapPin size={18} className="mt-1 flex-shrink-0 text-brand-orange" />
+                      <div>
+                        <h3 className="font-heading text-2xl text-anthracite-900">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-7 text-anthracite-600 sm:text-base">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
