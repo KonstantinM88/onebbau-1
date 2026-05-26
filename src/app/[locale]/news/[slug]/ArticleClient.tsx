@@ -4,6 +4,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import MarkdownContent from '@/components/news/MarkdownContent';
 import { getSiteUrl } from '@/lib/site';
 import {
   ArrowLeft,
@@ -277,7 +278,7 @@ export default function ArticleClient({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-base sm:text-[17px] leading-relaxed"
         >
-          {renderContent(content)}
+          <MarkdownContent content={content} />
         </motion.div>
 
         {/* Bottom divider */}

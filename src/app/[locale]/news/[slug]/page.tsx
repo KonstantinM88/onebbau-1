@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       metaDesc: true,
       metaDescRu: true,
       coverUrl: true,
+      coverWidth: true,
+      coverHeight: true,
     },
   });
 
@@ -59,8 +61,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
             images: [
               {
                 url: `${siteUrl}${article.coverUrl}`,
-                width: 1200,
-                height: 630,
+                width: article.coverWidth || 1600,
+                height: article.coverHeight || 900,
                 alt: title,
               },
             ],

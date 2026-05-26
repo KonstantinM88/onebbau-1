@@ -8,9 +8,9 @@ import { getSession } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'news');
-const COVER_WIDTH = 1200;
-const COVER_HEIGHT = 630; // OG image ratio
-const WEBP_QUALITY = 85;
+const COVER_WIDTH = 1600;
+const COVER_HEIGHT = 900; // 16:9 image ratio
+const WEBP_QUALITY = 88;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 function slugify(text: string): string {
@@ -92,25 +92,26 @@ export async function POST(request: NextRequest) {
 
       await mkdir(UPLOAD_DIR, { recursive: true });
       const buffer = Buffer.from(await coverFile.arrayBuffer());
-      const image = sharp(buffer, { failOn: 'none' });
+      const image = sharp(buffer, { failOn: 'none' }).rotate();
       const meta = await image.metadata();
 
       if (!meta.width || !meta.height) {
         return NextResponse.json({ error: 'Ungültige Bilddatei' }, { status: 400 });
       }
 
-      // Resize to cover dimensions (crop to fill)
+      // Scale down for article covers without cropping useful image content.
       const webpBuffer = await image
-        .resize(COVER_WIDTH, COVER_HEIGHT, { fit: 'cover', position: 'center' })
+        .resize(COVER_WIDTH, COVER_HEIGHT, { fit: 'inside', withoutEnlargement: true })
         .webp({ quality: WEBP_QUALITY })
         .toBuffer();
 
       const filename = `${slug}_${Date.now()}_${randomUUID().slice(0, 8)}.webp`;
+      const finalMeta = await sharp(webpBuffer).metadata();
       await writeFile(path.join(UPLOAD_DIR, filename), webpBuffer);
 
       coverUrl = `/uploads/news/${filename}`;
-      coverWidth = COVER_WIDTH;
-      coverHeight = COVER_HEIGHT;
+      coverWidth = finalMeta.width || meta.width;
+      coverHeight = finalMeta.height || meta.height;
     }
 
     const article = await prisma.newsArticle.create({
@@ -191,12 +192,20 @@ export async function PATCH(request: NextRequest) {
 
       await mkdir(UPLOAD_DIR, { recursive: true });
       const buffer = Buffer.from(await coverFile.arrayBuffer());
-      const webpBuffer = await sharp(buffer, { failOn: 'none' })
-        .resize(COVER_WIDTH, COVER_HEIGHT, { fit: 'cover', position: 'center' })
+      const image = sharp(buffer, { failOn: 'none' }).rotate();
+      const meta = await image.metadata();
+
+      if (!meta.width || !meta.height) {
+        return NextResponse.json({ error: 'UngГјltige Bilddatei' }, { status: 400 });
+      }
+
+      const webpBuffer = await image
+        .resize(COVER_WIDTH, COVER_HEIGHT, { fit: 'inside', withoutEnlargement: true })
         .webp({ quality: WEBP_QUALITY })
         .toBuffer();
 
       const filename = `${existing.slug}_${Date.now()}_${randomUUID().slice(0, 8)}.webp`;
+      const finalMeta = await sharp(webpBuffer).metadata();
       await writeFile(path.join(UPLOAD_DIR, filename), webpBuffer);
 
       // Delete old cover
@@ -207,8 +216,8 @@ export async function PATCH(request: NextRequest) {
       }
 
       data.coverUrl = `/uploads/news/${filename}`;
-      data.coverWidth = COVER_WIDTH;
-      data.coverHeight = COVER_HEIGHT;
+      data.coverWidth = finalMeta.width || meta.width;
+      data.coverHeight = finalMeta.height || meta.height;
     }
 
     // Remove cover

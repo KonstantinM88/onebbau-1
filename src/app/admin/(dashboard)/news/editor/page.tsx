@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import MarkdownContent from '@/components/news/MarkdownContent';
 import {
   ArrowLeft,
   Save,
@@ -36,7 +37,7 @@ type Article = {
   publishedAt: string;
 };
 
-const COVER_HINT = 'Empfohlene Größe: 1200×630 (16:9). Formate: JPG, PNG, GIF, WebP, AVIF. Max 10 MB. Automatische Konvertierung zu WebP.';
+const OPTIMAL_COVER_HINT = 'Empfohlene Groesse: 1600x900 oder 1200x675 (16:9). Formate: JPG, PNG, GIF, WebP, AVIF. Max 10 MB. Automatische Konvertierung zu WebP.';
 
 function LangTab({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) {
   return (
@@ -85,6 +86,7 @@ export default function NewsEditorPage() {
   const [loading, setLoading] = useState(!!editId);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showSeo, setShowSeo] = useState(false);
+  const [contentMode, setContentMode] = useState<'write' | 'preview'>('write');
 
   // Form state
   const [title, setTitle] = useState('');
@@ -329,13 +331,48 @@ export default function NewsEditorPage() {
               charCount={lang === 'de' ? content.length : contentRu.length}
               maxChars={50000}
             />
+            <div className="mb-3 inline-flex rounded-xl bg-anthracite-100 p-1">
+              <button
+                type="button"
+                onClick={() => setContentMode('write')}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  contentMode === 'write'
+                    ? 'bg-white text-anthracite-900 shadow-sm'
+                    : 'text-anthracite-400 hover:text-anthracite-700'
+                }`}
+              >
+                Markdown
+              </button>
+              <button
+                type="button"
+                onClick={() => setContentMode('preview')}
+                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
+                  contentMode === 'preview'
+                    ? 'bg-white text-anthracite-900 shadow-sm'
+                    : 'text-anthracite-400 hover:text-anthracite-700'
+                }`}
+              >
+                Vorschau
+              </button>
+            </div>
             <textarea
               value={lang === 'de' ? content : contentRu}
               onChange={(e) => lang === 'de' ? setContent(e.target.value) : setContentRu(e.target.value)}
               placeholder={lang === 'de' ? 'Artikeltext eingeben...' : 'Введите текст статьи...'}
               rows={16}
-              className="w-full resize-y rounded-xl border border-anthracite-200 bg-anthracite-50/50 px-4 py-3 font-mono text-sm text-anthracite-900 outline-none transition-colors focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20"
+              className={`${contentMode === 'preview' ? 'hidden ' : ''}w-full resize-y rounded-xl border border-anthracite-200 bg-anthracite-50/50 px-4 py-3 font-mono text-sm text-anthracite-900 outline-none transition-colors focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20`}
             />
+            {contentMode === 'preview' && (
+              <div className="min-h-[378px] rounded-xl border border-anthracite-200 bg-anthracite-50/50 px-4 py-3 text-sm">
+                {(lang === 'de' ? content : contentRu).trim() ? (
+                  <MarkdownContent content={lang === 'de' ? content : contentRu} compact />
+                ) : (
+                  <p className="text-sm text-anthracite-300">
+                    Markdown-Vorschau erscheint hier.
+                  </p>
+                )}
+              </div>
+            )}
             <p className="mt-2 text-[11px] text-anthracite-300">
               Absätze mit Leerzeile trennen. Überschriften mit ## markieren. Listen mit – beginnen.
             </p>
@@ -410,7 +447,7 @@ export default function NewsEditorPage() {
                 <img
                   src={displayCover}
                   alt="Cover"
-                  className="w-full aspect-[1200/630] object-cover"
+                  className="aspect-video w-full bg-anthracite-100 object-contain"
                 />
                 <button
                   type="button"
@@ -440,7 +477,7 @@ export default function NewsEditorPage() {
 
             <p className="mt-3 flex items-start gap-1.5 text-[11px] leading-relaxed text-anthracite-300">
               <Info className="mt-0.5 h-3 w-3 flex-shrink-0" />
-              {COVER_HINT}
+              {OPTIMAL_COVER_HINT}
             </p>
           </div>
 
@@ -463,8 +500,8 @@ export default function NewsEditorPage() {
             <FieldLabel label="Предпросмотр обложки" />
             <div className="rounded-xl border border-anthracite-100 bg-anthracite-50 p-3">
               {displayCover && (
-                <div className="mb-3 overflow-hidden rounded-lg aspect-[1200/630]">
-                  <img src={displayCover} alt="" className="w-full h-full object-cover" />
+                <div className="mb-3 overflow-hidden rounded-lg bg-anthracite-100 aspect-video">
+                  <img src={displayCover} alt="" className="h-full w-full object-contain" />
                 </div>
               )}
               <p className="text-sm font-semibold text-anthracite-900 line-clamp-2">{title || 'Überschrift...'}</p>
