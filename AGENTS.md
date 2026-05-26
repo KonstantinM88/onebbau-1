@@ -118,6 +118,32 @@ Gallery upload logic is separate from news upload logic:
 
 Do not assume changes to news cover processing also apply to gallery images.
 
+## Production File Uploads
+
+Current local upload behavior writes generated files into `public/uploads/...` with `fs/promises`.
+
+This is not suitable for production on Vercel:
+
+- Vercel Functions have a read-only filesystem.
+- Only temporary scratch space such as `/tmp` is writable.
+- Files written at runtime are not persistent across deployments, cold starts, or function instance changes.
+
+Target production architecture:
+
+- Store uploaded images in object storage, preferably Vercel Blob for this Vercel-hosted project.
+- Keep Neon/Postgres for structured data only.
+- Store image metadata in the database: public URL, blob pathname/key, width, height, size, captions, category, and article/gallery relations.
+- Do not store actual image binaries in Neon/Postgres unless there is a strong reason. It would bloat the database, make backups heavier, and serve media less efficiently than CDN-backed object storage.
+
+Likely future implementation:
+
+- Install `@vercel/blob`.
+- Create a Vercel Blob store.
+- Add `BLOB_READ_WRITE_TOKEN` in Vercel project environment variables and local env as needed.
+- Replace `writeFile(...)` and `unlink(...)` in `src/app/api/admin/news/route.ts` and `src/app/api/admin/gallery/route.ts` with Blob `put(...)` and `del(...)`.
+- Save full Blob URLs or stable Blob pathnames in Prisma records instead of `/uploads/news/...` or `/uploads/gallery/...`.
+- Review upload size strategy: Vercel server uploads are best for smaller files; for larger files use direct/client uploads or reduce admin upload limits.
+
 ## Metadata And SEO
 
 Article metadata is generated in `src/app/[locale]/news/[slug]/page.tsx`.
@@ -147,3 +173,4 @@ Article metadata is generated in `src/app/[locale]/news/[slug]/page.tsx`.
 - Added Markdown preview mode to the admin news editor.
 - Changed news cover image processing to avoid forced crop and preserve useful image area.
 - Updated article OpenGraph metadata to use actual stored cover dimensions.
+- Documented that production uploads on Vercel need persistent object storage such as Vercel Blob, not runtime writes to `public/uploads`.
