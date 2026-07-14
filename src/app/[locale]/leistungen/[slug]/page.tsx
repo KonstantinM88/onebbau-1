@@ -31,6 +31,7 @@ import {
   ProcessRail,
   ProcessStep,
   HoverCard,
+  FaqAccordion,
 } from '@/components/landing/LandingMotion';
 
 type Params = Promise<{ locale: string; slug: string }>;
@@ -183,10 +184,10 @@ export default async function LandingPage({ params }: { params: Params }) {
       <Header />
       <main>
         {/* ═══════ HERO с blueprint-анимацией ═══════ */}
-        <section className="relative isolate overflow-hidden bg-anthracite-950 pt-32 pb-20 sm:pt-40 sm:pb-28">
-          <BlueprintHero className="pointer-events-none absolute -right-16 top-1/2 hidden w-[520px] -translate-y-1/2 text-brand-orange/70 lg:block" />
+        <section className="relative isolate overflow-hidden bg-anthracite-950 pb-16 pt-28 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-40">
+          <BlueprintHero className="pointer-events-none absolute -right-24 top-28 w-[340px] text-brand-orange/20 sm:-right-16 sm:top-1/2 sm:w-[440px] sm:-translate-y-1/2 sm:text-brand-orange/30 lg:w-[520px] lg:text-brand-orange/70" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(232,97,26,0.12),transparent_55%)]" aria-hidden="true" />
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
               <Reveal>
                 <span className="inline-flex items-center rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-brand-orange">
@@ -194,41 +195,49 @@ export default async function LandingPage({ params }: { params: Params }) {
                 </span>
               </Reveal>
               <Reveal delay={0.08}>
-                <h1 className="mt-6 font-heading text-4xl leading-tight text-white sm:text-5xl md:text-[3.4rem]">
+                <h1 className="mt-5 font-heading text-[2.15rem] leading-[1.08] text-white sm:mt-6 sm:text-5xl md:text-[3.4rem]">
                   {c.h1}
                 </h1>
               </Reveal>
               {/* Прямой ответ — первый текст на странице, его цитируют AI-системы */}
               <Reveal delay={0.16}>
-                <p className="mt-6 text-lg leading-relaxed text-anthracite-100">
+                <p className="mt-5 text-base leading-7 text-anthracite-100 sm:mt-6 sm:text-lg sm:leading-relaxed">
                   {c.directAnswer}
                 </p>
               </Reveal>
               <Reveal delay={0.24}>
-                <div className="mt-9 flex flex-wrap items-center gap-4">
+                <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                   <a
                     href="#contact"
-                    className="group inline-flex items-center gap-2 rounded-full bg-brand-orange px-7 py-3.5 font-semibold text-white transition-colors hover:bg-brand-orange-dark"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-orange px-6 py-4 text-center font-semibold text-white shadow-lg shadow-brand-orange/20 transition-all hover:bg-brand-orange-dark hover:shadow-xl sm:w-auto sm:px-7 sm:py-3.5"
                   >
                     {c.ctaButton}
                     <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                   </a>
                   <a
                     href={`tel:${phone.replace(/\s/g, '')}`}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 font-semibold text-white transition-colors hover:border-white/60"
+                    className="group inline-flex w-full items-center justify-center gap-3 rounded-full border border-white/25 bg-white/[0.04] px-5 py-3.5 font-semibold text-white transition-all hover:border-brand-orange/70 hover:bg-brand-orange/10 sm:w-auto sm:px-6"
                   >
-                    <Phone size={17} /> {phone}
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-orange text-white transition-transform group-hover:scale-105">
+                      <Phone size={17} />
+                    </span>
+                    <span className="text-left leading-tight">
+                      <span className="block text-xs font-medium uppercase tracking-wider text-anthracite-300">
+                        {locale === 'ru' ? 'Позвонить сейчас' : 'Jetzt anrufen'}
+                      </span>
+                      <span className="mt-0.5 block">{phone}</span>
+                    </span>
                   </a>
                 </div>
               </Reveal>
               {/* Счётчики-рулетки */}
-              <div className="mt-12 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+              <div className="mt-10 grid grid-cols-1 gap-3 border-t border-white/10 pt-6 sm:mt-12 sm:grid-cols-3 sm:gap-6 sm:pt-8">
                 {c.stats.map((s, i) => (
-                  <Reveal key={s.label} delay={0.3 + i * 0.08}>
-                    <p className="font-heading text-3xl text-brand-orange sm:text-4xl">
+                  <Reveal key={s.label} delay={0.3 + i * 0.08} className="flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 sm:block sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0">
+                    <p className="min-w-[5.5rem] font-heading text-3xl leading-none text-brand-orange sm:min-w-0 sm:text-4xl sm:leading-normal">
                       <Counter value={s.value} suffix={s.suffix} />
                     </p>
-                    <p className="mt-1 text-sm text-anthracite-300">{s.label}</p>
+                    <p className="text-sm leading-5 text-anthracite-300 sm:mt-1">{s.label}</p>
                   </Reveal>
                 ))}
               </div>
@@ -316,23 +325,19 @@ export default async function LandingPage({ params }: { params: Params }) {
         </section>
 
         {/* ═══════ FAQ (виден пользователю + FAQPage schema) ═══════ */}
-        <section className="py-20 sm:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <Reveal>
-              <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">{c.faqTitle}</h2>
+        <section className="relative overflow-hidden bg-gradient-to-b from-white via-anthracite-50/60 to-white py-16 sm:py-24">
+          <div className="pointer-events-none absolute -right-32 top-10 h-72 w-72 rounded-full bg-brand-orange/[0.07] blur-3xl" aria-hidden="true" />
+          <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <Reveal className="mb-8 sm:mb-10">
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-brand-orange">FAQ</span>
+              <h2 className="mt-3 font-heading text-3xl leading-tight text-anthracite-900 sm:text-4xl">{c.faqTitle}</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-anthracite-600 sm:text-base">
+                {locale === 'ru'
+                  ? 'Короткие и понятные ответы на вопросы, которые чаще всего возникают перед началом работ.'
+                  : 'Klare Antworten auf die Fragen, die vor dem Projektstart am häufigsten gestellt werden.'}
+              </p>
             </Reveal>
-            <div className="mt-10 space-y-4">
-              {c.faq.map((f, i) => (
-                <Reveal key={f.q} delay={i * 0.04}>
-                  <details className="group rounded-2xl border border-anthracite-200/80 bg-white p-6 open:shadow-lg open:shadow-black/[0.04]">
-                    <summary className="cursor-pointer list-none font-semibold text-anthracite-900 marker:hidden">
-                      {f.q}
-                    </summary>
-                    <p className="mt-3 leading-relaxed text-anthracite-600">{f.a}</p>
-                  </details>
-                </Reveal>
-              ))}
-            </div>
+            <FaqAccordion items={c.faq} />
           </div>
         </section>
 

@@ -7,6 +7,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import {
+  AnimatePresence,
   motion,
   useInView,
   useReducedMotion,
@@ -15,6 +16,7 @@ import {
   useTransform,
   animate,
 } from 'framer-motion';
+import { Plus } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /* Reveal — базовый scroll-reveal                                      */
@@ -232,6 +234,85 @@ export function HoverCard({
     >
       {children}
     </motion.div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* FaqAccordion — доступный accordion с анимацией высоты              */
+/* ------------------------------------------------------------------ */
+
+export function FaqAccordion({
+  items,
+}: {
+  items: Array<{ q: string; a: string }>;
+}) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const reduced = useReducedMotion();
+
+  return (
+    <div className="space-y-3 sm:space-y-4">
+      {items.map((item, index) => {
+        const isOpen = openIndex === index;
+        const panelId = `landing-faq-panel-${index}`;
+
+        return (
+          <motion.div
+            key={item.q}
+            initial={reduced ? false : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.45, delay: index * 0.04 }}
+            className={`overflow-hidden rounded-2xl border bg-white transition-colors sm:rounded-3xl ${
+              isOpen
+                ? 'border-brand-orange/35 shadow-xl shadow-brand-orange/[0.08]'
+                : 'border-anthracite-200/80 shadow-sm hover:border-brand-orange/25'
+            }`}
+          >
+            <button
+              type="button"
+              aria-expanded={isOpen}
+              aria-controls={panelId}
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className="flex w-full items-center gap-4 px-5 py-5 text-left sm:gap-5 sm:px-7 sm:py-6"
+            >
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-orange/10 text-xs font-bold text-brand-orange sm:h-9 sm:w-9">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="min-w-0 flex-1 text-base font-semibold leading-snug text-anthracite-900 sm:text-lg">
+                {item.q}
+              </span>
+              <motion.span
+                animate={{ rotate: isOpen ? 45 : 0 }}
+                transition={{ duration: reduced ? 0 : 0.25 }}
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
+                  isOpen ? 'bg-brand-orange text-white' : 'bg-anthracite-100 text-anthracite-700'
+                }`}
+                aria-hidden="true"
+              >
+                <Plus size={18} />
+              </motion.span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  id={panelId}
+                  role="region"
+                  initial={reduced ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={reduced ? { display: 'none' } : { height: 0, opacity: 0 }}
+                  transition={{ duration: reduced ? 0 : 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <p className="border-t border-anthracite-100 px-5 py-5 pl-[4.25rem] text-sm leading-7 text-anthracite-600 sm:px-7 sm:py-6 sm:pl-[5.75rem] sm:text-base">
+                    {item.a}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 }
 

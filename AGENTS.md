@@ -157,6 +157,7 @@ Service landing pages:
 - Content for the six bilingual SEO service landings lives in `src/lib/landings.ts`.
 - The dynamic route is `src/app/[locale]/leistungen/[slug]/page.tsx`; it generates metadata and JSON-LD from the shared landing data.
 - Localized landing artwork lives in `public/images/landings`; use `image`, `imageAspect`, and a descriptive localized `imageAlt` in the landing data so DE/RU graphics remain accessible, uncropped, and responsive.
+- Landing hero and FAQ motion lives in `src/components/landing/LandingMotion.tsx`; keep the blueprint visible as a low-opacity mobile background, stack long statistics below `sm`, and use the accessible `FaqAccordion` instead of native unanimated `<details>` cards.
 - Keep landing links visible on `/[locale]/services` and in `src/components/Footer.tsx` so new pages remain internally linked.
 - `src/app/sitemap.ts` creates DE and RU entries from the same `landings` array.
 - Prices, timelines, and statistics in landing content are business claims and must be confirmed before production deployment.
