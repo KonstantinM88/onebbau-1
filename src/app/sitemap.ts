@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { prisma } from '@/lib/prisma';
 import { locales } from '@/i18n/config';
 import { getSiteUrl } from '@/lib/site';
+import { landings } from '@/lib/landings';
 
 const STATIC_PATHS = [
   '',
@@ -43,6 +44,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   });
 
+  const landingEntries: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    landings.map((landing) => ({
+      url: `${baseUrl}/${locale}/leistungen/${landing.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    }))
+  );
+
   const articleEntries: MetadataRoute.Sitemap = articles.flatMap((article) =>
     locales.map((locale) => ({
       url: `${baseUrl}/${locale}/news/${article.slug}`,
@@ -52,5 +62,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...staticEntries, ...articleEntries];
+  return [...staticEntries, ...landingEntries, ...articleEntries];
 }

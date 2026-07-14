@@ -18,6 +18,7 @@ import Footer from '@/components/Footer';
 import Testimonials from '@/components/Testimonials';
 import Faq from '@/components/Faq';
 import Contact from '@/components/Contact';
+import { getLandingContent, landings } from '@/lib/landings';
 import { getSiteUrl } from '@/lib/site';
 
 type Params = Promise<{ locale: string }>;
@@ -422,6 +423,45 @@ export default async function ServicesPage({ params }: { params: Params }) {
                   ))}
                 </div>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="font-heading text-3xl text-anthracite-900 sm:text-4xl">
+                {lang === 'de' ? 'Leistungen im Detail' : 'Услуги подробнее'}
+              </h2>
+              <p className="mt-4 text-base leading-8 text-anthracite-600 sm:text-lg">
+                {lang === 'de'
+                  ? 'Erfahren Sie mehr über Ablauf, Preise und häufige Fragen zu unseren Leistungen in Halle (Saale).'
+                  : 'Подробнее о ходе работ, ценах и частых вопросах по нашим услугам в Halle (Saale).'}
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {landings.map((landing) => {
+                const content = getLandingContent(landing, lang);
+
+                return (
+                  <Link
+                    key={landing.slug}
+                    href={`/${lang}/leistungen/${landing.slug}`}
+                    className="group rounded-[1.75rem] border border-anthracite-200 bg-white p-6 shadow-lg shadow-black/[0.03] transition hover:-translate-y-1 hover:border-brand-orange/40 hover:shadow-xl"
+                  >
+                    <h3 className="font-heading text-2xl text-anthracite-900">
+                      {content.eyebrow}
+                    </h3>
+                    <p className="mt-3 line-clamp-3 text-sm leading-7 text-anthracite-600">
+                      {content.metaDescription}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-orange">
+                      {lang === 'de' ? 'Mehr erfahren' : 'Подробнее'}
+                      <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

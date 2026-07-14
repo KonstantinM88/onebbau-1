@@ -28,7 +28,7 @@ async function sendContactEmail(params: {
     throw new Error('RESEND_API_KEY is not configured');
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || 'service@onnebau.de';
+  const to = process.env.CONTACT_TO_EMAIL || 'service@onebbau.de';
   const from = process.env.CONTACT_FROM_EMAIL || 'Onebbau <onboarding@resend.dev>';
   const localeLabel = params.locale === 'ru' ? 'RU' : 'DE';
   const phoneValue = params.phone || '—';

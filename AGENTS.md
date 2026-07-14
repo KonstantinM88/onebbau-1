@@ -152,6 +152,15 @@ Article metadata is generated in `src/app/[locale]/news/[slug]/page.tsx`.
 - OpenGraph image dimensions should use stored `coverWidth` and `coverHeight` when available.
 - Sitemap includes static pages and published articles.
 
+Service landing pages:
+
+- Content for the six bilingual SEO service landings lives in `src/lib/landings.ts`.
+- The dynamic route is `src/app/[locale]/leistungen/[slug]/page.tsx`; it generates metadata and JSON-LD from the shared landing data.
+- Localized landing artwork lives in `public/images/landings`; use `image`, `imageAspect`, and a descriptive localized `imageAlt` in the landing data so DE/RU graphics remain accessible, uncropped, and responsive.
+- Keep landing links visible on `/[locale]/services` and in `src/components/Footer.tsx` so new pages remain internally linked.
+- `src/app/sitemap.ts` creates DE and RU entries from the same `landings` array.
+- Prices, timelines, and statistics in landing content are business claims and must be confirmed before production deployment.
+
 ## Styling Notes
 
 - Tailwind CSS is used throughout.

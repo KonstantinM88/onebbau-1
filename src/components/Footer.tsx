@@ -3,6 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/lib/contact';
+import { getLandingContent, landings } from '@/lib/landings';
 
 export default function Footer() {
   const t = useTranslations();
@@ -54,9 +55,14 @@ export default function Footer() {
               {t('footer.services')}
             </h4>
             <ul className="space-y-2.5">
-              {(t.raw('services.construction.items') as string[]).slice(0, 6).map((item, i) => (
-                <li key={i}>
-                  <span className="text-sm text-anthracite-400">{item}</span>
+              {landings.map((landing) => (
+                <li key={landing.slug}>
+                  <a
+                    href={`/${locale}/leistungen/${landing.slug}`}
+                    className="text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
+                  >
+                    {getLandingContent(landing, locale).eyebrow}
+                  </a>
                 </li>
               ))}
             </ul>
