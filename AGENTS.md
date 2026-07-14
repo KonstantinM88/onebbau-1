@@ -115,6 +115,8 @@ Important:
 Gallery upload logic is separate from news upload logic:
 
 - `src/app/api/admin/gallery/route.ts`
+- `scripts/gallery-rename-map.json` is the source map for the one-time SEO filename migration, and `scripts/rename-gallery.mjs --dry` safely audits disk and database state before an idempotent live run.
+- Gallery filenames and `GalleryImage.url` records must always be migrated together. The rename script skips missing disk files, updates gallery/news references transactionally, and rolls back a just-renamed file if the database update fails.
 
 Do not assume changes to news cover processing also apply to gallery images.
 
