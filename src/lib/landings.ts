@@ -422,10 +422,14 @@ export const landings: Landing[] = [
   {
     slug: 'fassadendaemmung-halle',
     serviceType: 'Fassadendämmung (WDVS)',
-    image: '/images/facade.webp',
+    image: {
+      de: '/images/landings/fassadendaemmung-halle-de.webp',
+      ru: '/images/landings/fassadendaemmung-halle-ru.webp',
+    },
+    imageAspect: { de: 2, ru: 2 },
     imageAlt: {
-      de: 'Gedämmte und neu gestaltete Fassade eines Wohnhauses',
-      ru: 'Утеплённый и обновлённый фасад жилого дома',
+      de: 'Modernes Wohnhaus mit gedämmter Fassade und Übersicht der Onebbau-Fassadenarbeiten',
+      ru: 'Современный дом с утеплённым фасадом и описанием фасадных работ Onebbau',
     },
     keywords: [
       'Fassadendämmung Halle Saale',
