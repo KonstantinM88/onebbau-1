@@ -96,7 +96,7 @@ export default function Header() {
                   onClick={() => switchLocale('de')}
                   className={`px-3 py-1.5 text-xs font-semibold tracking-wide transition-all ${
                     locale === 'de'
-                      ? 'bg-brand-orange text-white'
+                      ? 'bg-brand-orange-dark text-white'
                       : useSolidHeader
                         ? 'text-anthracite-500 hover:text-anthracite-800'
                         : 'text-white/60 hover:text-white'
@@ -108,7 +108,7 @@ export default function Header() {
                   onClick={() => switchLocale('ru')}
                   className={`px-3 py-1.5 text-xs font-semibold tracking-wide transition-all ${
                     locale === 'ru'
-                      ? 'bg-brand-orange text-white'
+                      ? 'bg-brand-orange-dark text-white'
                       : useSolidHeader
                         ? 'text-anthracite-500 hover:text-anthracite-800'
                         : 'text-white/60 hover:text-white'
@@ -121,7 +121,7 @@ export default function Header() {
               {/* CTA Button */}
               <a
                 href={`/${locale}/contact`}
-                className="flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-95"
+                className="flex items-center gap-2 bg-brand-orange-dark hover:bg-[#A9430C] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-95"
               >
                 <Phone size={15} />
                 {t('contact')}
@@ -184,7 +184,7 @@ export default function Header() {
                   onClick={() => switchLocale('de')}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                     locale === 'de'
-                      ? 'bg-brand-orange text-white'
+                      ? 'bg-brand-orange-dark text-white'
                       : 'bg-anthracite-100 text-anthracite-600'
                   }`}
                 >
@@ -194,7 +194,7 @@ export default function Header() {
                   onClick={() => switchLocale('ru')}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                     locale === 'ru'
-                      ? 'bg-brand-orange text-white'
+                      ? 'bg-brand-orange-dark text-white'
                       : 'bg-anthracite-100 text-anthracite-600'
                   }`}
                 >
@@ -209,7 +209,7 @@ export default function Header() {
                 transition={{ delay: 0.3 }}
                 href={`/${locale}/contact`}
                 onClick={() => setIsMobileOpen(false)}
-                className="mt-4 mx-4 flex items-center justify-center gap-2 bg-brand-orange text-white py-3.5 rounded-xl text-base font-semibold"
+                className="mt-4 mx-4 flex items-center justify-center gap-2 bg-brand-orange-dark text-white py-3.5 rounded-xl text-base font-semibold"
               >
                 <Phone size={18} />
                 {t('contact')}

@@ -170,6 +170,9 @@ Service landing pages:
 - Icons should use `lucide-react` when available.
 - Public pages use `Header` and `Footer`.
 - Admin UI uses compact dashboard-style cards and Tailwind utility classes.
+- On `bg-anthracite-900`, use at least `text-anthracite-300` for normal text and `text-brand-orange-light` for orange link text; lighter gray levels and regular brand orange do not meet WCAG AA contrast for small text.
+- White text on orange buttons must use `bg-brand-orange-dark` or a darker background. Regular `bg-brand-orange` is below the 4.5:1 contrast threshold for normal-sized text.
+- Keep heading levels sequential. On the home page, `TrustBadges` headings are `h2` because they immediately follow the hero `h1`; footer column headings are also `h2`.
 - Avoid introducing unrelated broad redesigns when making focused fixes.
 
 ## Environment Notes

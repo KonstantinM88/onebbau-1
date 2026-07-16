@@ -94,7 +94,7 @@ export default function Hero() {
           >
             <button
               onClick={scrollToContact}
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark active:scale-95"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-brand-orange-dark px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-[#A9430C] active:scale-95"
             >
               {t('cta')}
               <ArrowRight
@@ -158,7 +158,7 @@ export default function Hero() {
             >
               <button
                 onClick={scrollToContact}
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-orange px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-orange-dark hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-brand-orange-dark px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-[#A9430C] hover:shadow-2xl hover:shadow-brand-orange/30 active:scale-95"
               >
                 {t('cta')}
                 <ArrowRight

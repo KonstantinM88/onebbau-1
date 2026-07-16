@@ -18,16 +18,16 @@ export default function Footer() {
             <div className="mb-4">
               <span className="text-2xl font-heading"><span className="text-brand-orange">One</span><span className="text-white">bbau</span></span>
             </div>
-            <p className="text-sm leading-relaxed text-anthracite-400">
+            <p className="text-sm leading-relaxed text-anthracite-300">
               {t('footer.description')}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+            <h2 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
               {t('footer.navigation')}
-            </h4>
+            </h2>
             <ul className="space-y-2.5">
               {[
                 { label: t('nav.home'), href: `/${locale}` },
@@ -40,7 +40,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.id ? `/${locale}#${item.id}` : item.href}
-                    className="text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
+                    className="text-sm text-anthracite-300 hover:text-brand-orange-light transition-colors"
                   >
                     {item.label}
                   </a>
@@ -51,15 +51,15 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+            <h2 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
               {t('footer.services')}
-            </h4>
+            </h2>
             <ul className="space-y-2.5">
               {landings.map((landing) => (
                 <li key={landing.slug}>
                   <a
                     href={`/${locale}/leistungen/${landing.slug}`}
-                    className="text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
+                    className="text-sm text-anthracite-300 hover:text-brand-orange-light transition-colors"
                   >
                     {getLandingContent(landing, locale).eyebrow}
                   </a>
@@ -70,15 +70,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
+            <h2 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
               {t('nav.contact')}
-            </h4>
+            </h2>
             <div className="space-y-3">
-              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+              <a href={`tel:${process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}`} className="flex items-center gap-3 text-sm text-anthracite-300 hover:text-brand-orange-light transition-colors">
                 <Phone size={15} className="text-brand-orange flex-shrink-0" />
                 {process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659'}
               </a>
-              <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`} className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors">
+              <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || 'info@onebbau.de'}`} className="flex items-center gap-3 text-sm text-anthracite-300 hover:text-brand-orange-light transition-colors">
                 <Mail size={15} className="text-brand-orange flex-shrink-0" />
                 {process.env.NEXT_PUBLIC_EMAIL || 'service@onebbau.de'}
               </a>
@@ -86,7 +86,7 @@ export default function Footer() {
                 href={COMPANY_MAP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 text-sm text-anthracite-400 hover:text-brand-orange transition-colors"
+                className="flex items-center gap-3 text-sm text-anthracite-300 hover:text-brand-orange-light transition-colors"
               >
                 <MapPin size={15} className="text-brand-orange flex-shrink-0" />
                 <span>{COMPANY_STREET_ADDRESS}, {COMPANY_POSTAL_CITY}</span>
@@ -95,10 +95,10 @@ export default function Footer() {
 
             {/* Legal Links */}
             <div className="mt-6 pt-4 border-t border-anthracite-800 space-y-2">
-              <a href={`/${locale}/impressum`} className="block text-xs text-anthracite-500 hover:text-brand-orange transition-colors">
+              <a href={`/${locale}/impressum`} className="block text-xs text-anthracite-300 hover:text-brand-orange-light transition-colors">
                 {t('nav.impressum')}
               </a>
-              <a href={`/${locale}/datenschutz`} className="block text-xs text-anthracite-500 hover:text-brand-orange transition-colors">
+              <a href={`/${locale}/datenschutz`} className="block text-xs text-anthracite-300 hover:text-brand-orange-light transition-colors">
                 {t('nav.datenschutz')}
               </a>
             </div>
@@ -109,7 +109,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-anthracite-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <p className="text-center text-xs text-anthracite-500">
+          <p className="text-center text-xs text-anthracite-300">
             © {new Date().getFullYear()} Onebbau. {t('footer.rights')}
           </p>
         </div>
