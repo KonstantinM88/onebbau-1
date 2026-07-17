@@ -22,8 +22,8 @@ Project guidance for Codex and other coding agents working in this repository.
 
 ## Tech Stack
 
-- Next.js `16.1.6`
-- React `19.2.4`
+- Next.js `16.2.10`
+- React `19.2.7`
 - TypeScript
 - Tailwind CSS
 - Prisma `6.19.2`
@@ -56,6 +56,8 @@ prisma generate && next build
 ```
 
 If `prisma generate` fails with `EPERM` on `node_modules\.prisma\client\query_engine-windows.dll.node`, a running Next dev server is probably holding the file. Stop only this project's Node processes, then retry the build.
+
+When updating npm dependencies without a Prisma migration, keep both `prisma` and `@prisma/client` on the same existing version and verify them explicitly with `npm ls prisma @prisma/client` after installation.
 
 ## Key Directories
 
