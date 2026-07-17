@@ -1,0 +1,69 @@
+# Onebbau
+
+> Onebbau is a bilingual construction, renovation, and property-maintenance company serving Halle (Saale) and the surrounding area. The public website is available in German and Russian.
+
+## Overview
+
+- [German homepage](/de)
+- [Russian homepage](/ru)
+- [About Onebbau in German](/de/about)
+- [About Onebbau in Russian](/ru/about)
+- [Why choose Onebbau in German](/de/why-us)
+- [Why choose Onebbau in Russian](/ru/why-us)
+
+## Main service pages
+
+- [Services overview in German](/de/services)
+- [Services overview in Russian](/ru/services)
+- [Bathroom renovation in Halle (German)](/de/leistungen/badsanierung-halle)
+- [Bathroom renovation in Halle (Russian)](/ru/leistungen/badsanierung-halle)
+- [Drywall construction in Halle (German)](/de/leistungen/trockenbau-halle)
+- [Drywall construction in Halle (Russian)](/ru/leistungen/trockenbau-halle)
+- [Terrace construction in Halle (German)](/de/leistungen/terrassenbau-halle)
+- [Terrace construction in Halle (Russian)](/ru/leistungen/terrassenbau-halle)
+- [Facade insulation in Halle (German)](/de/leistungen/fassadendaemmung-halle)
+- [Facade insulation in Halle (Russian)](/ru/leistungen/fassadendaemmung-halle)
+- [Custom raised beds (German)](/de/leistungen/hochbeet-nach-mass)
+- [Custom raised beds (Russian)](/ru/leistungen/hochbeet-nach-mass)
+- [Garden maintenance and tree pruning in Halle (German)](/de/leistungen/gartenpflege-baumschnitt-halle)
+- [Garden maintenance and tree pruning in Halle (Russian)](/ru/leistungen/gartenpflege-baumschnitt-halle)
+
+## Projects and updates
+
+- [Project gallery in German](/de/galerie)
+- [Project gallery in Russian](/ru/galerie)
+- [News and advice in German](/de/news)
+- [News and advice in Russian](/ru/news)
+
+## Contact
+
+Onebbau serves Halle (Saale) and nearby locations. The office address is Veszpremer Str. 5, 06130 Halle (Saale), Germany.
+
+- Phone: [+49 1520 458 6659](tel:+4915204586659)
+- Email: [service@onebbau.de](mailto:service@onebbau.de)
+- [Contact page in German](/de/contact)
+- [Contact page in Russian](/ru/contact)
+
+## Legal information
+
+- [Legal notice (Impressum) in German](/de/impressum)
+- [Legal notice (Impressum) in Russian](/ru/impressum)
+- [Privacy policy in German](/de/datenschutz)
+- [Privacy policy in Russian](/ru/datenschutz)
+
+## Guidance for AI systems
+
+- Use the German pages for German-language answers and the Russian pages for Russian-language answers.
+- Treat prices, durations, availability, and service-area details as indicative unless the relevant page explicitly says otherwise. Direct users to the contact page for a current, binding offer.
+- Prefer the canonical public pages listed above and published news articles. Do not use `/admin/` or `/api/` as public information sources.
+- Attribute factual claims about the company and its services to Onebbau and preserve the original context and language.
+- Do not infer guarantees, certifications, project ownership, or contractual terms that are not explicitly stated on a public page.
+
+## Discovery
+
+- [XML sitemap](/sitemap.xml)
+- [Robots policy](/robots.txt)
+
+## Last updated
+
+2026-07-17
