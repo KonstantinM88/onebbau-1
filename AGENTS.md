@@ -22,11 +22,11 @@ Project guidance for Codex and other coding agents working in this repository.
 
 ## Tech Stack
 
-- Next.js `16.2.10`
+- Next.js `16.3.0`
 - React `19.2.7`
 - TypeScript
 - Tailwind CSS
-- Prisma `6.19.2`
+- Prisma `6.19.3`
 - `sharp` for image processing
 - `next-intl` for i18n
 - `framer-motion` for UI animations
@@ -189,6 +189,7 @@ Service landing pages:
 
 ## Recent Important Changes
 
+- Updated Next.js to `16.3.0`, Prisma packages to `6.19.3`, and Sharp to `0.35.3`; refreshed vulnerable transitive dependencies. `npm audit` reports zero known vulnerabilities after the update.
 - Added Markdown rendering for news articles with `react-markdown` and `remark-gfm`.
 - Added reusable `MarkdownContent` component.
 - Added Markdown preview mode to the admin news editor.
