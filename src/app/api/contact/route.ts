@@ -22,6 +22,7 @@ async function sendContactEmail(params: {
   phone: string;
   message: string;
   locale: string;
+  privacyAcceptedAt: string;
 }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -41,6 +42,7 @@ async function sendContactEmail(params: {
     `E-Mail: ${params.email}`,
     `Telefon: ${phoneValue}`,
     `Sprache: ${params.locale}`,
+    `Datenschutzhinweise bestätigt: ${params.privacyAcceptedAt}`,
     '',
     'Nachricht:',
     params.message,
@@ -52,6 +54,7 @@ async function sendContactEmail(params: {
     <p><strong>E-Mail:</strong> ${escapeHtml(params.email)}</p>
     <p><strong>Telefon:</strong> ${escapeHtml(phoneValue)}</p>
     <p><strong>Sprache:</strong> ${escapeHtml(params.locale)}</p>
+    <p><strong>Datenschutzhinweise bestätigt:</strong> ${escapeHtml(params.privacyAcceptedAt)}</p>
     <p><strong>Nachricht:</strong></p>
     <p>${escapeHtml(params.message).replace(/\n/g, '<br/>')}</p>
   `.trim();
@@ -87,6 +90,19 @@ export async function POST(request: NextRequest) {
     const message = typeof body?.message === 'string' ? body.message.trim() : '';
     const locale = body?.locale === 'ru' ? 'ru' : 'de';
 
+    // Reject missing, false or string values before sending email or writing data.
+    if (body?.privacyAccepted !== true) {
+      return NextResponse.json(
+        {
+          code: 'PRIVACY_REQUIRED',
+          error: locale === 'ru'
+            ? 'Подтвердите ознакомление с условиями обработки данных.'
+            : 'Bitte bestätigen Sie die Datenschutzhinweise.',
+        },
+        { status: 400 }
+      );
+    }
+
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: 'Name, E-Mail und Nachricht sind erforderlich.' },
@@ -101,7 +117,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    await sendContactEmail({ name, email, phone, message, locale });
+    await sendContactEmail({ name, email, phone, message, locale, privacyAcceptedAt: new Date().toISOString() });
 
     const contact = await prisma.contactRequest.create({
       data: {

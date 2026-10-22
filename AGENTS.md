@@ -202,9 +202,13 @@ Service landing pages:
 
 ## Environment Notes
 
+- The shared contact form requires an unchecked-by-default privacy acknowledgment (`privacyAccepted: true` as a JSON boolean). `/api/contact` rejects absent, false and string values before email/database side effects. Notification email includes the server acknowledgment timestamp; no new database consent record or migration is introduced.
+- Keep DE/RU privacy wording consistent with the existing request-processing bases in `/datenschutz`. Do not claim that no service ever receives data: Vercel, Neon and Resend are already disclosed. The form says data is not sold/shared for advertising and links to the localized privacy policy in a new tab to preserve form input.
+
 - `.env` is present and used by Next/Prisma.
 - Do not expose or document `.env` secrets.
 - The local dev server commonly runs on `http://localhost:3000`.
+- Runtime next-intl messages come from `src/i18n/dictionaries/{de,ru}.json` through `src/i18n/request.ts`; the root `messages/` directory is legacy. If newly added JSON keys render literally in a long-running dev session, restart only this project's dev server before changing message paths.
 
 ## Recent Important Changes
 

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -10,6 +11,7 @@ import { COMPANY_MAP_URL, COMPANY_POSTAL_CITY, COMPANY_STREET_ADDRESS } from '@/
 export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
+  const privacyId = useId();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const primaryPhone = process.env.NEXT_PUBLIC_PHONE || '+49 1520 458 6659';
   const secondaryPhone = '+49 177 33077538';
@@ -23,22 +25,33 @@ export default function Contact() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!privacyAccepted) {
+      setPrivacyError(true);
+      setStatus('error');
+      return;
+    }
+    setPrivacyError(false);
     setStatus('sending');
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, locale }),
+        body: JSON.stringify({ ...formData, locale, privacyAccepted }),
       });
 
       if (res.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', message: '' });
+        setPrivacyAccepted(false);
       } else {
+        const result = await res.json().catch(() => null);
+        setPrivacyError(result?.code === 'PRIVACY_REQUIRED');
         setStatus('error');
       }
     } catch {
@@ -226,24 +239,55 @@ export default function Contact() {
                 />
               </div>
 
+              <div className="mb-6 rounded-xl border border-anthracite-200 bg-anthracite-50/60 p-4">
+                <div className="flex items-start gap-3">
+                  <input
+                    id={privacyId}
+                    name="privacyAccepted"
+                    type="checkbox"
+                    required
+                    checked={privacyAccepted}
+                    onChange={(event) => {
+                      setPrivacyAccepted(event.target.checked);
+                      setPrivacyError(false);
+                    }}
+                    aria-describedby={`${privacyId}-notice`}
+                    aria-invalid={privacyError || undefined}
+                    className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-brand-orange-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-orange-dark"
+                  />
+                  <label htmlFor={privacyId} className="cursor-pointer text-sm leading-6 text-anthracite-700">
+                    {t.rich('form.privacyAcceptance', {
+                      privacy: (chunks) => (
+                        <Link href={`/${locale}/datenschutz`} target="_blank" rel="noopener" className="font-semibold text-brand-orange-dark underline underline-offset-4">
+                          {chunks}
+                        </Link>
+                      ),
+                    })} <span aria-hidden="true">*</span>
+                  </label>
+                </div>
+                <p id={`${privacyId}-notice`} className="mt-3 text-xs leading-5 text-anthracite-600">
+                  {t('form.privacyNotice')}
+                </p>
+              </div>
+
               {/* Status Messages */}
               {status === 'success' && (
-                <div className="mb-4 flex items-center gap-2 p-3 rounded-xl bg-green-50 text-green-700 text-sm">
+                <div role="status" className="mb-4 flex items-center gap-2 p-3 rounded-xl bg-green-50 text-green-700 text-sm">
                   <CheckCircle size={18} />
                   {t('form.success')}
                 </div>
               )}
               {status === 'error' && (
-                <div className="mb-4 flex items-center gap-2 p-3 rounded-xl bg-red-50 text-red-700 text-sm">
+                <div role="alert" className="mb-4 flex items-center gap-2 p-3 rounded-xl bg-red-50 text-red-700 text-sm">
                   <AlertCircle size={18} />
-                  {t('form.error')}
+                  {privacyError ? t('form.privacyRequired') : t('form.error')}
                 </div>
               )}
 
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-dark disabled:opacity-60 text-white py-3.5 sm:py-4 rounded-xl text-base font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-[0.98]"
+                className="w-full flex items-center justify-center gap-2 bg-brand-orange-dark hover:bg-brand-orange-dark/90 disabled:opacity-60 text-white py-3.5 sm:py-4 rounded-xl text-base font-semibold transition-all hover:shadow-lg hover:shadow-brand-orange/25 active:scale-[0.98]"
               >
                 <Send size={18} />
                 {status === 'sending' ? t('form.sending') : t('form.submit')}
