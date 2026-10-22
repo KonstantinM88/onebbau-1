@@ -21,6 +21,8 @@
 # misc
 .DS_Store
 *.pem
+# Unselected customer originals; only prepared publication assets belong in Git.
+/public/temp/
 
 # debug
 npm-debug.log*

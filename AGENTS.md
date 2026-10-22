@@ -162,13 +162,27 @@ Article metadata is generated in `src/app/[locale]/news/[slug]/page.tsx`.
 
 Service landing pages:
 
-- Content for the six bilingual SEO service landings lives in `src/lib/landings.ts`.
+- Content for the seven bilingual SEO service landings is registered in `src/lib/landings.ts`; the flooring landing content lives in `src/lib/landings/bodenverlegung.ts`.
 - The dynamic route is `src/app/[locale]/leistungen/[slug]/page.tsx`; it generates metadata and JSON-LD from the shared landing data.
 - Localized landing artwork lives in `public/images/landings`; use `image`, `imageAspect`, and a descriptive localized `imageAlt` in the landing data so DE/RU graphics remain accessible, uncropped, and responsive.
 - Landing hero and FAQ motion lives in `src/components/landing/LandingMotion.tsx`; keep the blueprint visible as a low-opacity mobile background, stack long statistics below `sm`, and use the accessible `FaqAccordion` instead of native unanimated `<details>` cards.
 - Keep landing links visible on `/[locale]/services` and in `src/components/Footer.tsx` so new pages remain internally linked.
 - `src/app/sitemap.ts` creates DE and RU entries from the same `landings` array.
 - Prices, timelines, and statistics in landing content are business claims and must be confirmed before production deployment.
+- Flooring project statistics (95 m², 3 rooms, 2 weeks) describe one confirmed renovation, not the measured laminate area or a general turnaround guarantee.
+- `LandingProject` displays real before/process/after photos. Its news link appears only when the referenced article is published; the static project block remains available if the database lookup fails.
+
+## Preparing The 95 m² Renovation Draft
+
+- Bilingual source Markdown and SEO fields: `content/news/wohnungsrenovierung-halle-95m2/`.
+- Run `node --env-file=.env scripts/prepare-renovation-draft.mjs` to prepare and validate six selected WebP copies from `public/temp`. The script preserves original photographs and existing output files.
+- Add `--create-draft` to create the unpublished article if its slug is absent. It never updates an existing article; subsequent edits belong in the admin editor or must be explicitly synchronized.
+- Generated images live in `public/uploads/news/wohnungsrenovierung-halle-95m2/` and must ship with the site before publishing the database draft. Runtime uploads remain a separate storage concern.
+- `public/temp/` is ignored by Git so unselected customer originals are not deployed. Commit only the prepared publication assets.
+- GitHub `origin/main` triggers the Vercel Production deployment. Confirm the landing and all six image URLs are live before publishing the related database article; verify both language URLs and sitemap afterwards.
+- Source filenames dated 2026-10-22 are the supplied photo batch date; do not treat that as the renovation completion date.
+- Public content uses Halle (Saale), without the customer's full street address. Kitchen material is PVC; rooms and corridor use laminate. Doors were sanded, primed and painted with hardware retained.
+- Next.js 16.3 `next dev` appends the managed `nextjs-agent-rules` block below to this file.
 
 ## Styling Notes
 
@@ -196,3 +210,13 @@ Service landing pages:
 - Changed news cover image processing to avoid forced crop and preserve useful image area.
 - Updated article OpenGraph metadata to use actual stored cover dimensions.
 - Documented that production uploads on Vercel need persistent object storage such as Vercel Blob, not runtime writes to `public/uploads`.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

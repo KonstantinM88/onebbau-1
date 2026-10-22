@@ -4,6 +4,8 @@
 // локальные сущности Halle (Saale) (GEO), FAQ для FAQPage-schema,
 // ценовые ориентиры и внутренняя перелинковка.
 
+import { floorLanding } from './landings/bodenverlegung';
+
 export type Locale = 'de' | 'ru';
 
 export type LandingFaq = { q: string; a: string };
@@ -44,6 +46,14 @@ export type Landing = {
   imageAlt: Record<Locale, string>;
   keywords: string[];
   related: string[];
+  project?: {
+    articleSlug: string;
+    beforeImage: string;
+    processImage: string;
+    afterImage: string;
+    de: { title: string; text: string; captions: [string, string, string]; linkLabel: string };
+    ru: { title: string; text: string; captions: [string, string, string]; linkLabel: string };
+  };
   de: LandingContent;
   ru: LandingContent;
 };
@@ -54,6 +64,7 @@ const AREA_RU =
   'Мы работаем в Halle (Saale) и в радиусе ~30 км: Saalekreis, Merseburg, Landsberg, Kabelsketal, Teutschenthal, Petersberg, а также во всех районах города — от Trotha и Kröllwitz до Ammendorf и Büschdorf.';
 
 export const landings: Landing[] = [
+  floorLanding,
   {
     slug: 'badsanierung-halle',
     serviceType: 'Badsanierung',

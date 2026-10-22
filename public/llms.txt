@@ -15,6 +15,8 @@
 
 - [Services overview in German](/de/services)
 - [Services overview in Russian](/ru/services)
+- [Laminate and PVC flooring installation in Halle (German)](/de/leistungen/bodenverlegung-halle)
+- [Laminate and PVC flooring installation in Halle (Russian)](/ru/leistungen/bodenverlegung-halle)
 - [Bathroom renovation in Halle (German)](/de/leistungen/badsanierung-halle)
 - [Bathroom renovation in Halle (Russian)](/ru/leistungen/badsanierung-halle)
 - [Drywall construction in Halle (German)](/de/leistungen/trockenbau-halle)
@@ -66,4 +68,4 @@ Onebbau serves Halle (Saale) and nearby locations. The office address is Veszpre
 
 ## Last updated
 
-2026-07-17
+2026-10-22

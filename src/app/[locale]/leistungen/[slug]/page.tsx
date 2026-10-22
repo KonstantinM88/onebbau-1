@@ -14,6 +14,7 @@ import { ArrowRight, CheckCircle2, MapPin, Phone } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
+import LandingProject from '@/components/landing/LandingProject';
 import {
   landings,
   getLanding,
@@ -259,19 +260,21 @@ export default async function LandingPage({ params }: { params: Params }) {
               </p>
             </Reveal>
             <div
-              className="relative mt-10 w-full overflow-hidden rounded-2xl bg-anthracite-100 shadow-xl shadow-black/[0.08] sm:mt-12 sm:rounded-[2rem]"
+              className={`relative mt-10 w-full overflow-hidden rounded-2xl bg-anthracite-100 shadow-xl shadow-black/[0.08] sm:mt-12 sm:rounded-[2rem] ${landingImageAspect < 1 ? 'mx-auto max-w-md' : ''}`}
               style={{ aspectRatio: landingImageAspect }}
             >
               <Image
                 src={landingImage}
                 alt={landingImageAlt}
                 fill
-                sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 1280px"
+                sizes={landingImageAspect < 1 ? '(max-width: 480px) calc(100vw - 2rem), 448px' : '(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 1280px'}
                 className="object-contain"
               />
             </div>
           </div>
         </section>
+
+        {landing.project && <LandingProject project={landing.project} locale={locale} />}
 
         {/* ═══════ BENEFITS ═══════ */}
         <section className="bg-anthracite-50/60 py-20 sm:py-24">
