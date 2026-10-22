@@ -198,6 +198,7 @@ Service landing pages:
 - White text on orange buttons must use `bg-brand-orange-dark` or a darker background. Regular `bg-brand-orange` is below the 4.5:1 contrast threshold for normal-sized text.
 - Keep heading levels sequential. On the home page, `TrustBadges` headings are `h2` because they immediately follow the hero `h1`; footer column headings are also `h2`.
 - Avoid introducing unrelated broad redesigns when making focused fixes.
+- The shared footer includes the owner's German credit `Werbung · Webentwicklung: SaaleWeb` on both locales. Its URL uses `utm_source=onebbau.de`, `utm_medium=referral`, `utm_campaign=footer`, and `utm_content=webentwicklung` for attribution on SaaleWeb; the external link has `rel="sponsored noopener"`.
 
 ## Environment Notes
 

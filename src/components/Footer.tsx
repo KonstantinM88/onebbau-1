@@ -108,10 +108,18 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-anthracite-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-between gap-3 px-4 py-5 sm:flex-row sm:px-6 lg:px-8">
           <p className="text-center text-xs text-anthracite-300">
             © {new Date().getFullYear()} Onebbau. {t('footer.rights')}
           </p>
+          <a
+            href="https://saaleweb.de/?utm_source=onebbau.de&utm_medium=referral&utm_campaign=footer&utm_content=webentwicklung"
+            target="_blank"
+            rel="sponsored noopener"
+            className="text-center text-xs text-anthracite-300 underline decoration-anthracite-500 underline-offset-4 transition-colors hover:text-brand-orange-light focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-orange-light"
+          >
+            Werbung · Webentwicklung: <span className="font-semibold text-brand-orange-light">SaaleWeb</span>
+          </a>
         </div>
       </div>
     </footer>
