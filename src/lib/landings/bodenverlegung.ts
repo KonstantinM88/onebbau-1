@@ -12,6 +12,10 @@ export const floorLanding: Landing = {
   keywords: ['Bodenverlegung Halle Saale', 'Laminat verlegen Halle', 'PVC Boden verlegen Halle', 'Bodenbelag erneuern Halle'],
   related: ['trockenbau-halle', 'badsanierung-halle'],
   project: {
+    comparison: {
+      beforeImage: '/uploads/news/wohnungsrenovierung-halle-95m2/zimmer-vergleich-vorher.webp',
+      afterImage: '/uploads/news/wohnungsrenovierung-halle-95m2/zimmer-vergleich-nachher.webp',
+    },
     articleSlug: 'wohnungsrenovierung-halle-95m2-zwei-wochen',
     beforeImage: '/uploads/news/wohnungsrenovierung-halle-95m2/flur-vorher.webp',
     processImage: '/uploads/news/wohnungsrenovierung-halle-95m2/laminat-verlegung.webp',

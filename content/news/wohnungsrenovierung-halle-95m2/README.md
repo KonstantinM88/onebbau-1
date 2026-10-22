@@ -23,6 +23,8 @@ All facts refer to one three-room apartment. The two weeks cover the whole renov
 
 Outputs are stored in `public/uploads/news/wohnungsrenovierung-halle-95m2/`. Original photographs are untouched. WebP conversion preserves full framing and does not enlarge images. The cover fits inside 1600 × 900; other images fit inside 1600 × 1280.
 
+The landing also uses two additional supplied attachments for the interactive room comparison: `zimmer-vergleich-vorher.webp` (exposed floor) and `zimmer-vergleich-nachher.webp` (finished laminate). These preserve the original framing; the viewpoints differ slightly. They are independent of the six-photo import script and do not change the article cover or Markdown images. The original batch was subsequently moved from `public/temp` to the Windows Recycle Bin at the owner's request.
+
 ## Review and publication
 
 Review the database draft in `/admin/news` using the Markdown preview and both language tabs. The import script creates only an absent draft; it intentionally does not overwrite subsequent admin edits.

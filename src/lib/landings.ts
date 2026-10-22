@@ -47,6 +47,7 @@ export type Landing = {
   keywords: string[];
   related: string[];
   project?: {
+    comparison?: { beforeImage: string; afterImage: string };
     articleSlug: string;
     beforeImage: string;
     processImage: string;

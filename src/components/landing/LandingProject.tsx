@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import type { Landing } from '@/lib/landings';
+import BeforeAfterSlider from './BeforeAfterSlider';
 
 type Props = { project: NonNullable<Landing['project']>; locale: string };
 
@@ -28,6 +29,13 @@ export default async function LandingProject({ project, locale }: Props) {
           </h2>
           <p className="mt-5 leading-relaxed text-anthracite-700">{content.text}</p>
         </div>
+        {project.comparison && (
+          <BeforeAfterSlider
+            beforeImage={project.comparison.beforeImage}
+            afterImage={project.comparison.afterImage}
+            locale={locale}
+          />
+        )}
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {photos.map((src, index) => (
             <figure key={src} className="overflow-hidden rounded-2xl border border-anthracite-200 bg-white">

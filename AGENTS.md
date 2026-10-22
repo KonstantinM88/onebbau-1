@@ -172,6 +172,8 @@ Service landing pages:
 - Prices, timelines, and statistics in landing content are business claims and must be confirmed before production deployment.
 - Flooring project statistics (95 m², 3 rooms, 2 weeks) describe one confirmed renovation, not the measured laminate area or a general turnaround guarantee.
 - `LandingProject` displays real before/process/after photos. Its news link appears only when the referenced article is published; the static project block remains available if the database lookup fails.
+- Optional `project.comparison` adds `BeforeAfterSlider` with two photographs of the same room. It uses a native range input for keyboard/assistive technology, pointer capture for dragging, and `touch-action: pan-y` for vertical mobile scrolling. Keep the full-size layers fixed and reveal via `clip-path`; never resize the image itself as the slider moves.
+- Comparison labels and instructions are localized DE/RU. The supplied room photos have slightly different viewpoints; the UI discloses this and preserves their full framing.
 
 ## Preparing The 95 m² Renovation Draft
 
@@ -179,6 +181,7 @@ Service landing pages:
 - Run `node --env-file=.env scripts/prepare-renovation-draft.mjs` to prepare and validate six selected WebP copies from `public/temp`. The script preserves original photographs and existing output files.
 - Add `--create-draft` to create the unpublished article if its slug is absent. It never updates an existing article; subsequent edits belong in the admin editor or must be explicitly synchronized.
 - Generated images live in `public/uploads/news/wohnungsrenovierung-halle-95m2/` and must ship with the site before publishing the database draft. Runtime uploads remain a separate storage concern.
+- The same directory also contains `zimmer-vergleich-vorher.webp` and `zimmer-vergleich-nachher.webp`, prepared from two separately supplied attachments for the room comparison; the six-photo import script does not regenerate these.
 - `public/temp/` is ignored by Git so unselected customer originals are not deployed. Commit only the prepared publication assets.
 - GitHub `origin/main` triggers the Vercel Production deployment. Confirm the landing and all six image URLs are live before publishing the related database article; verify both language URLs and sitemap afterwards.
 - Source filenames dated 2026-10-22 are the supplied photo batch date; do not treat that as the renovation completion date.
