@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { connection } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { locales } from '@/i18n/config';
 import { getSiteUrl } from '@/lib/site';
@@ -17,6 +18,9 @@ const STATIC_PATHS = [
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // News can be published in the database after a deployment finishes.
+  // Read publication state at request time instead of freezing it at build time.
+  await connection();
   const baseUrl = getSiteUrl();
   const now = new Date();
 
